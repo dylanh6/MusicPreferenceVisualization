@@ -14,10 +14,13 @@ public class Input {
     /**
      * Main method for the prpgram
      * 
-     * @param args command line arguments
+     * @param args
+     *            command line arguments
      */
     public static void main(String[] args) {
         System.out.print("hello");
         System.out.print("hellome");
+        System.out.println("firstinput");
+
     }
 }
