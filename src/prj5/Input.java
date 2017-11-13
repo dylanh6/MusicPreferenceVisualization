@@ -21,6 +21,7 @@ public class Input {
         System.out.print("hello");
         System.out.print("hellome");
         System.out.println("firstinput");
+        System.out.print("me");
 
     }
 }
