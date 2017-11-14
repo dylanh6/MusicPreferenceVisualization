@@ -4,6 +4,7 @@
 package prj5;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
@@ -16,10 +17,11 @@ import java.util.Scanner;
 public class FileReader {
     
     private ArrayList<Song> songList;
-    private Person[] personArray;
+    private ArrayList<Person> personList;
     
-    public FileReader(String songFile) throws Exception {
+    public FileReader(String songFile, String personFile) throws Exception {
         songList = this.songReader(songFile);
+        personList = this.personReader(personFile);
     }
     
     public ArrayList<Song> songReader(String songFile) throws Exception {
@@ -48,7 +50,49 @@ public class FileReader {
         return localList;
     }
     
-    public ArrayList<Song> getList() {
+    public ArrayList<Person> personReader(String personFile) throws FileNotFoundException {
+        Scanner in = new Scanner(new File(personFile));
+        
+        ArrayList<Person> personList = new ArrayList<Person>();
+        
+        in.nextLine();        
+        while (in.hasNextLine()) {
+            String line = in.nextLine();
+            
+            String[] split = line.split(" *, *");
+            
+            int id = Integer.parseInt(split[0]);
+            String date = split[1];
+            String major = split[2];
+            String region = split[3];
+            String hobby = split[4];
+            
+            int songCount = songList.getLength() + 5;
+            
+            String[] responses = new String[songCount];
+            
+            
+            
+            for (int i = 0; i < songCount; i ++) {
+                responses[i] = split[i + 5];
+                
+            }
+            
+            Person localPerson = new Person(id, date, major, 
+                    region, hobby, responses);           
+            
+            personList.add(localPerson);
+        }
+        in.close();
+        
+        return personList;
+    }
+    
+    public ArrayList<Song> getSongList() {
         return songList;
+    }
+    
+    public ArrayList<Person> getPersonList() {
+        return personList;
     }
 }
