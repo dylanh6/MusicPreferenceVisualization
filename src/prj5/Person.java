@@ -3,6 +3,8 @@
  */
 package prj5;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -27,10 +29,18 @@ public class Person {
      * @param hobby accepts a string
      * @param responses accepts a string
      */
-    public Person(int id, Date date, String major, String region, 
+    public Person(int id, String date, String major, String region, 
             String hobby, String[] responses) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+        
+        
+        
         this.idNum = id;
-        this.date = date;
+        try {
+            this.date = dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         this.major = major;
         this.region = region;
         this.hobby = hobby;
@@ -65,6 +75,13 @@ public class Person {
         return region;
     }
     /**
+     * gest the hobby for the person
+     * @return return hobby
+     */
+    public String getHobby() {
+        return hobby;
+    }
+    /**
      * gets the responses of the person
      * @return
      */
@@ -76,7 +93,14 @@ public class Person {
      * @return returns 
      */
     public String toString() {
-        StringBuilder build = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
+        
+        builder.append(String.valueOf(this.getIdNum()));
+        builder.append(". " + String.valueOf(this.getDate()));
+        builder.append(" - Major: " + this.getMajor());
+        builder.append(", Region: " + this.getRegion());
+        
+        return builder.toString();
     }
     
     

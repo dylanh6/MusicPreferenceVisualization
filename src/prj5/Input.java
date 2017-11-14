@@ -16,12 +16,18 @@ public class Input {
      * 
      * @param args
      *            command line arguments
+     * @throws Exception 
      */
-    public static void main(String[] args) {
-        System.out.print("hello");
-        System.out.print("hellome");
-        System.out.println("firstinput");
-        System.out.print("me");
+    public static void main(String[] args) throws Exception {
+        
+        FileReader p = new FileReader("SongList.txt");
+      
+        
+        
+        
+        ArrayList<Song> test = p.getList();
+        
+        System.out.println(test.remove(1).getName());
 
     }
 }
