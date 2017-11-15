@@ -8,6 +8,7 @@ import CS2114.WindowSide;
 import java.awt.Color;
 import CS2114.Button;
 import CS2114.Shape;
+import CS2114.TextShape;
 
 /**
  * @author David Wise (davidw20)
@@ -32,6 +33,11 @@ public class GUIDisplayWindow {
     private Shape horzLineBottom;
     private Shape vertLineLeft;
     private Shape vertLineRight;
+    private TextShape legendName;
+    private Shape bar;
+    private int barWidth;
+
+    private int BAR_HEIGHT = 120;
 
 
     /**
@@ -230,6 +236,14 @@ public class GUIDisplayWindow {
         window.addShape(horzLineBottom);
         window.addShape(vertLineLeft);
         window.addShape(vertLineRight);
+
+        legendName = new TextShape(1200, 220, type + " Legend");
+        legendName.setBackgroundColor(Color.WHITE);
+
+        bar = new Shape(1300, 500, 15, 120, Color.BLACK);
+
+        window.addShape(legendName);
+        window.addShape(bar);
 
         if (type.equals("Hobby")) {
 
