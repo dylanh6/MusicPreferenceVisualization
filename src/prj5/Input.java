@@ -22,9 +22,9 @@ public class Input {
         
         FileReader p = new FileReader("SongListTest1.csv", "MusicSurveyDataTest1.csv");             
         
-        ArrayList<Song> test = p.getSongList();
+        SinglyLinkedList<Song> test = p.getSongList();
         
-        ArrayList<Person> personTest = p.getPersonList();
+        SinglyLinkedList<Person> personTest = p.getPersonList();
         
         System.out.println(test.remove(1).getName());
         

@@ -15,84 +15,88 @@ import java.util.Scanner;
  *
  */
 public class FileReader {
-    
-    private ArrayList<Song> songList;
-    private ArrayList<Person> personList;
-    
+
+    private SinglyLinkedList<Song> songList;
+    private SinglyLinkedList<Person> personList;
+
+
     public FileReader(String songFile, String personFile) throws Exception {
         songList = this.songReader(songFile);
         personList = this.personReader(personFile);
     }
-    
-    public ArrayList<Song> songReader(String songFile) throws Exception {
-        ArrayList<Song> localList = new ArrayList<Song>();
+
+
+    public SinglyLinkedList<Song> songReader(String songFile) throws Exception {
+        SinglyLinkedList<Song> localList = new SinglyLinkedList<Song>();
         Scanner in = new Scanner(new File(songFile));
-        
+
         in.nextLine();
-        
+
         while (in.hasNextLine()) {
             String line = in.nextLine();
-            
+
             String[] split = line.split(" *, *");
-            
-            String songName = split[0];          
+
+            String songName = split[0];
             String artistName = split[1];
             int year = Integer.parseInt(split[2]);
             String genre = split[3];
-            
+
             Song localSong = new Song(songName, artistName, year, genre);
-            
+
             localList.add(localSong);
-            
+
         }
         in.close();
-        
+
         return localList;
     }
-    
-    public ArrayList<Person> personReader(String personFile) throws FileNotFoundException {
+
+
+    public SinglyLinkedList<Person> personReader(String personFile)
+        throws FileNotFoundException {
         Scanner in = new Scanner(new File(personFile));
-        
-        ArrayList<Person> personList = new ArrayList<Person>();
-        
-        in.nextLine();        
+
+        SinglyLinkedList<Person> personList = new SinglyLinkedList<Person>();
+
+        in.nextLine();
         while (in.hasNextLine()) {
             String line = in.nextLine();
-            
+
             String[] split = line.split(" *, *");
-            
+
             int id = Integer.parseInt(split[0]);
             String date = split[1];
             String major = split[2];
             String region = split[3];
             String hobby = split[4];
-            
+
             int songCount = songList.getLength() + 5;
-            
+
             String[] responses = new String[songCount];
-            
-            
-            
-            for (int i = 0; i < songCount; i ++) {
+
+            for (int i = 0; i < songCount; i++) {
                 responses[i] = split[i + 5];
-                
+
             }
-            
-            Person localPerson = new Person(id, date, major, 
-                    region, hobby, responses);           
-            
+
+            Person localPerson = new Person(id, date, major, region, hobby,
+                responses);
+
             personList.add(localPerson);
         }
         in.close();
-        
+
         return personList;
     }
-    
-    public ArrayList<Song> getSongList() {
+
+
+    public SinglyLinkedList<Song> getSongList() {
         return songList;
     }
-    
-    public ArrayList<Person> getPersonList() {
+
+
+    public SinglyLinkedList<Person> getPersonList() {
         return personList;
     }
 }
