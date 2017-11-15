@@ -34,7 +34,6 @@ public class GUIDisplayWindow {
     private Shape vertLineRight;
 
 
-
     /**
      * Constructor
      */
@@ -46,10 +45,8 @@ public class GUIDisplayWindow {
         windowHeight = window.getHeight();
 
         createButtons();
-        
+
         printLegend("Hobby");
-        
-        
 
     }
 
@@ -217,33 +214,33 @@ public class GUIDisplayWindow {
     public void regionLegend() {
 
     }
-    
+
+
     /**
      * This method prints the correct legend
      */
     public void printLegend(String type) {
-        
-        
-        horzLineTop = new Shape(1150,200,300,2, Color.BLACK);
-        horzLineBottom = new Shape(1150,600,300,2, Color.BLACK);
-        vertLineLeft = new Shape(1150,200,2,400, Color.BLACK);
-        vertLineRight = new Shape(1450,200,2,400, Color.BLACK);
-        
+
+        horzLineTop = new Shape(1150, 200, 300, 2, Color.BLACK);
+        horzLineBottom = new Shape(1150, 600, 300, 2, Color.BLACK);
+        vertLineLeft = new Shape(1150, 200, 2, 400, Color.BLACK);
+        vertLineRight = new Shape(1450, 200, 2, 400, Color.BLACK);
+
         window.addShape(horzLineTop);
         window.addShape(horzLineBottom);
         window.addShape(vertLineLeft);
         window.addShape(vertLineRight);
-        
+
         if (type.equals("Hobby")) {
-            
+
         }
         else if (type.equals("Major")) {
-            
+
         }
         else { // type.equals("Region"))
-            
+
         }
-        
+
     }
 
 }

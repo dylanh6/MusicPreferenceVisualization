@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import linkedlist.SinglyLinkedList;
+
 /**
  * FileReader class class that reads the input files and stores the objects
  * 
@@ -71,7 +73,7 @@ public class FileReader {
             String region = split[3];
             String hobby = split[4];
 
-            int songCount = songList.getLength() + 5;
+            int songCount = songList.size() + 5;
 
             String[] responses = new String[songCount];
 

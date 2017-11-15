@@ -5,5 +5,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/CarranoDataStructuresLib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/CS2114-Support"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/GraphWindowLib"/>
+	<classpathentry kind="src" path="/Lab09LinkedListEnhancedSkeleton"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
