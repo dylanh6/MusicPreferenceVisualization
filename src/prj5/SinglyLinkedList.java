@@ -1,5 +1,7 @@
 package prj5;
 
+import linkedlist.LList;
+
 /**
  * This is a basic implementation of a linked list
  *
