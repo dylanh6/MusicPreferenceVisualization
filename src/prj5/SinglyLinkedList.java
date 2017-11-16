@@ -1,6 +1,10 @@
 package prj5;
 
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import linkedlist.LList;
+import java.util.Iterator;
 
 /**
  * This is a basic implementation of a linked list
@@ -20,7 +24,7 @@ import linkedlist.LList;
  *            This is the type of object that this class will store
  */
 
-public class SinglyLinkedList<E> implements LList<E> {
+public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
 
     /**
      * This represents a node in a singly linked list. This node stores data
@@ -40,13 +44,13 @@ public class SinglyLinkedList<E> implements LList<E> {
      * @version 10/15/2016
      * @version 03/17/2017
      */
-    public static class Node<D> {
+    public static class Node<E> {
 
         // The data element stored in the node.
-        private D data;
+        private E data;
 
         // The next node in the sequence.
-        private Node<D> next;
+        private Node<E> next;
 
 
         /**
@@ -55,7 +59,7 @@ public class SinglyLinkedList<E> implements LList<E> {
          * @param d
          *            the data to put inside the node
          */
-        public Node(D d) {
+        public Node(E d) {
             data = d;
         }
 
@@ -66,7 +70,7 @@ public class SinglyLinkedList<E> implements LList<E> {
          * @param n
          *            the node after this one
          */
-        public void setNext(Node<D> n) {
+        public void setNext(Node<E> n) {
             next = n;
         }
 
@@ -76,7 +80,7 @@ public class SinglyLinkedList<E> implements LList<E> {
          *
          * @return the next node
          */
-        public Node<D> next() {
+        public Node<E> next() {
             return next;
         }
 
@@ -86,12 +90,12 @@ public class SinglyLinkedList<E> implements LList<E> {
          *
          * @return the data in the node
          */
-        public D getData() {
+        public E getData() {
             return data;
         }
     }
 
-    private Node<E> head;
+    protected Node<E> head;
 
     // the size of the linked list
     private int size;
@@ -474,6 +478,88 @@ public class SinglyLinkedList<E> implements LList<E> {
         }
 
         return false;
+    }
+    
+    /**
+     * 
+     * @author Ian Connerney (Ianco)
+     *
+     * @param <A>
+     *            generic type
+     */
+    private class SLListIterator<A> implements Iterator<E> {
+        private Node<E> nextNode;
+        private Node<E> previousNode;
+        private boolean nextCalled;
+
+
+        /**
+         * Creates a new DLListIterator
+         */
+        public SLListIterator() {
+            nextNode = head;
+            previousNode = null;
+            nextCalled = false;
+        }
+
+
+        /**
+         * Checks if there are more elements in the list
+         *
+         * @return true if there are more elements in the list
+         */
+        @Override
+        public boolean hasNext() {
+            return nextNode.next() != get(size()-1);
+        }
+
+
+        /**
+         * Gets the next value in the list
+         *
+         * @return the next value
+         * @throws NoSuchElementException
+         *             if there are no nodes left in the list
+         */
+        @Override
+        public E next() {
+            if (hasNext()) {
+                Node<E> returnNode = nextNode;
+                nextNode = nextNode.next();
+                nextCalled = true;
+                previousNode = returnNode;
+                return returnNode.getData();
+            }
+            else {
+                throw new NoSuchElementException("Illegal call to next(); "
+                    + "iterator is after end of list");
+            }
+        }
+
+
+        /**
+         * Removes the last object returned with next() from the list
+         *
+         * @throws IllegalStateException
+         *             if next has not been called yet
+         *             and if the element has already been removed
+         */
+        @Override
+        public void remove() {
+            if (!nextCalled) {
+                throw new IllegalStateException("Next has not been called yet");
+            }
+            else {
+                previousNode.setNext(nextNode.next());
+                size--;
+                nextCalled = false;
+            }
+        }
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new SLListIterator<E>();
     }
 
 }
