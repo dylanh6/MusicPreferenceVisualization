@@ -34,5 +34,35 @@ public class Major {
         this.otherYes = otherYes;
     }
     
+    public int getCompSciHeard() {
+        return compSciHeard;
+    }
     
+    public int getCompSciYes() {
+        return compSciYes;
+    }
+    
+    public int getOtherEngHeard() {
+        return otherEngHeard;
+    }
+    
+    public int getOtherEngYes() {
+        return otherEngYes;
+    }
+    
+    public int getmathCMDAHeard() {
+        return mathCMDAHeard;
+    }
+    
+    public int getmathCMDAYes() {
+        return mathCMDAYes;
+    }
+    
+    public int getOtherHeard() {
+        return otherHeard;
+    }
+    
+    public int getOtherYes() {
+        return otherYes;
+    }
 }

@@ -32,5 +32,41 @@ public class Hobby {
         this.musicHeard = musicHeard;
         this.musicYes = musicYes;
     }
+
+    public int getReadHeard() {
+        return readHeard;
+    }
+
+
+    public int getReadYes() {
+        return readYes;
+    }
+
+
+    public int getArtHeard() {
+        return artHeard;
+    }
+
+
+    public int getArtYes() {
+        return artYes;
+    }
+
+
+    public int getSportHeard() {
+        return sportHeard;
+    }
+
+    public int getSportYes() {
+        return sportYes;
+    }
+
+    public int getMusicHeard() {
+        return musicHeard;
+    }
+
+    public int getMusicYes() {
+        return musicYes;
+    }
     
 }

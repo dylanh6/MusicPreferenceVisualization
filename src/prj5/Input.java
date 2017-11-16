@@ -16,23 +16,32 @@ public class Input {
      * 
      * @param args
      *            command line arguments
-     * @throws Exception 
+     * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        
-        FileReader p = new FileReader("SongListTest1.csv", "MusicSurveyDataTest1.csv");             
-        
-        SinglyLinkedList<Song> test = p.getSongList();
-        
-        SinglyLinkedList<Person> personTest = p.getPersonList();
-        
-        System.out.println(test.remove(1).getName());
-        
-        System.out.println(personTest.remove(1).getIdNum());
-        
-        //for (int i = 1; i < personTest.getLength() - 1; i++) {
-          //  System.out.println(personTest.remove(i).getIdNum());
-        //}
+
+        if (args.length == 1) {
+            FileReader fileIn = new FileReader(args[0], args[1]);
+            Analyzer a = new Analyzer(fileIn.getPersonList(), fileIn.getSongList());
+            a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
+            System.out.println(a.outPutStringHobby());
+        }
+        else {
+
+            FileReader f = new FileReader("SongListTest1.csv", "MusicSurveyDataTest1.csv");
+            
+            Analyzer h = new Analyzer(f.getPersonList(), f.getSongList());
+
+            h.representationCount(f.getPersonList(), f.getSongList());
+
+            System.out.println(h.outPutStringHobby());
+
+            int i = 0;
+        }
+
+        // for (int i = 1; i < personTest.getLength() - 1; i++) {
+        // System.out.println(personTest.remove(i).getIdNum());
+        // }
 
     }
 }
