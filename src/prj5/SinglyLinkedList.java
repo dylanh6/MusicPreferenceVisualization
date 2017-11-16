@@ -1,10 +1,7 @@
 package prj5;
 
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import linkedlist.LList;
-import java.util.Iterator;
 
 /**
  * This is a basic implementation of a linked list
