@@ -17,8 +17,8 @@ import CS2114.TextShape;
 public class GUIDisplayWindow {
 
     private Window window;
-    private int windowWidth;
-    private int windowHeight;
+    private static int windowWidth;
+    private static int windowHeight;
     private Button prev;
     private Button sortName;
     private Button sortTitle;
@@ -41,8 +41,13 @@ public class GUIDisplayWindow {
     private TextShape category3;
     private TextShape category4;
     private Shape barLegend;
-    private static final int BAR_WIDTH = 16;
-    private static final int BAR_HEIGHT = 120;
+    private static final int BAR_WIDTH = 10;
+    private static final int BAR_HEIGHT = 80;
+    private static int BAR_X;
+    private static int BAR_Y;
+    private Shape bar;
+    private Shape dataBar;
+    private static final int DATABAR_HEIGHT = BAR_HEIGHT / 4;
 
 
     /**
@@ -55,9 +60,14 @@ public class GUIDisplayWindow {
         windowWidth = window.getWidth();
         windowHeight = window.getHeight();
 
+        BAR_X = (windowWidth / 3) / 3;
+        BAR_Y = (windowHeight / 3) / 3;
+
         createButtons();
 
-        printLegend("Ma");
+        printLegend("Hobby");
+
+        printGylph();
 
     }
 
@@ -237,7 +247,7 @@ public class GUIDisplayWindow {
         horzLineBottom = new Shape(1150, 600, 300, 2, Color.BLACK);
         vertLineLeft = new Shape(1150, 200, 2, 400, Color.BLACK);
         vertLineRight = new Shape(1450, 200, 2, 400, Color.BLACK);
-        barLegend = new Shape(1292, 450, BAR_WIDTH, BAR_HEIGHT, Color.BLACK);
+        barLegend = new Shape(1292, 450, 16, 120, Color.BLACK);
 
         window.addShape(horzLineTop);
         window.addShape(horzLineBottom);
@@ -302,6 +312,157 @@ public class GUIDisplayWindow {
         window.addShape(category2);
         window.addShape(category3);
         window.addShape(category4);
+
+    }
+
+
+    /**
+     * This method prints the correct legend
+     */
+    public void printGylph() {
+
+        int widthMulti = 0;
+        int heightMulti = 0;
+
+        for (int i = 0; i < 9; i++) {
+
+            if (i == 0 || i == 1 || i == 2) {
+                heightMulti = 1;
+
+            }
+            else if (i == 3 || i == 4 || i == 5) {
+                heightMulti = 3;
+
+            }
+            else if (i == 6 || i == 7 || i == 8) {
+                heightMulti = 5;
+
+            }
+            if (i == 0 || i == 3 || i == 6) {
+                widthMulti = 1;
+
+            }
+            else if (i == 1 || i == 4 || i == 7) {
+                widthMulti = 3;
+
+            }
+            else if (i == 2 || i == 5 || i == 8) {
+                widthMulti = 5;
+
+            }
+
+            bar = new Shape(BAR_X * widthMulti, BAR_Y * heightMulti, BAR_WIDTH,
+                BAR_HEIGHT, Color.BLACK);
+            window.addShape(bar);
+
+        }
+
+        Color color = null;
+
+        // Print left bars
+        for (int i = 0; i < 4; i++) {
+
+            if (i == 0) {
+                color = Color.PINK;
+
+            }
+            else if (i == 1) {
+                color = Color.BLUE;
+
+            }
+            else if (i == 2) {
+                color = Color.YELLOW;
+
+            }
+            else {// (i == 3) {
+
+                color = Color.GREEN;
+
+            }
+
+            int barSize = (i + 1) * 15;
+            dataBar = new Shape(BAR_X - barSize, BAR_Y + (i * DATABAR_HEIGHT),
+                barSize, DATABAR_HEIGHT, color);
+
+            window.addShape(dataBar);
+
+        }
+
+        // Print right bars
+        for (int i = 0; i < 4; i++) {
+
+            if (i == 0) {
+                color = Color.PINK;
+
+            }
+            else if (i == 1) {
+                color = Color.BLUE;
+
+            }
+            else if (i == 2) {
+                color = Color.YELLOW;
+
+            }
+            else {// (i == 3) {
+
+                color = Color.GREEN;
+
+            }
+
+            int barSize = (i + 1) * 15;
+            dataBar = new Shape(BAR_X + BAR_WIDTH, BAR_Y + (i * DATABAR_HEIGHT),
+                barSize, DATABAR_HEIGHT, color);
+
+            window.addShape(dataBar);
+
+        }
+
+        /*
+         * int barSize = 0;
+         * 
+         * Color color = null;
+         * 
+         * // print left
+         * for (int i = 1; i < 5; i++) {
+         * 
+         * barSize = i * 10;
+         * 
+         * dataBar = new Shape(BAR_X - barSize, BAR_Y + BAR_HEIGHT / i, barSize,
+         * DATABAR_HEIGHT, color);
+         * 
+         * window.addShape(dataBar);
+         * }
+         * 
+         * // print right
+         * for (int i = 1; i < 5; i++) {
+         * 
+         * barSize = i * 10 + 50;
+         * 
+         * if (i == 1) {
+         * color = Color.PINK;
+         * 
+         * }
+         * else if (i == 2) {
+         * color = Color.BLUE;
+         * 
+         * }
+         * else if (i == 3) {
+         * color = Color.YELLOW;
+         * 
+         * }
+         * else {// (i == 3) {
+         * 
+         * color = Color.GREEN;
+         * 
+         * }
+         * 
+         * dataBar = new Shape(BAR_X + BAR_WIDTH, BAR_Y / (BAR_HEIGHT) / i,
+         * barSize, DATABAR_HEIGHT, color);
+         * 
+         * window.addShape(dataBar);
+         * 
+         * }
+         */
 
     }
 

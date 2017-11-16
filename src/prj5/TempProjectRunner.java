@@ -4,10 +4,10 @@
 package prj5;
 
 /**
- * @author David Wise (davidw20)
- * @version Nov 16, 2017
+ * @author David
+ *
  */
-public class ProjectRunner {
+public class TempProjectRunner {
 
     /**
      * @param args
@@ -15,7 +15,6 @@ public class ProjectRunner {
     public static void main(String[] args) {
         
         GUIDisplayWindow window = new GUIDisplayWindow();
-
     }
 
 }
