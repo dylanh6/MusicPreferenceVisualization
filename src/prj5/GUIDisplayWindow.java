@@ -34,10 +34,15 @@ public class GUIDisplayWindow {
     private Shape vertLineLeft;
     private Shape vertLineRight;
     private TextShape legendName;
-    private Shape bar;
-    private int barWidth;
-
-    private int BAR_HEIGHT = 120;
+    private TextShape heardLikes;
+    private TextShape songTitle;
+    private TextShape category1;
+    private TextShape category2;
+    private TextShape category3;
+    private TextShape category4;
+    private Shape barLegend;
+    private static final int BAR_WIDTH = 16;
+    private static final int BAR_HEIGHT = 120;
 
 
     /**
@@ -52,7 +57,7 @@ public class GUIDisplayWindow {
 
         createButtons();
 
-        printLegend("Hobby");
+        printLegend("Ma");
 
     }
 
@@ -227,33 +232,76 @@ public class GUIDisplayWindow {
      */
     public void printLegend(String type) {
 
+        // Lines around legend and bar
         horzLineTop = new Shape(1150, 200, 300, 2, Color.BLACK);
         horzLineBottom = new Shape(1150, 600, 300, 2, Color.BLACK);
         vertLineLeft = new Shape(1150, 200, 2, 400, Color.BLACK);
         vertLineRight = new Shape(1450, 200, 2, 400, Color.BLACK);
+        barLegend = new Shape(1292, 450, BAR_WIDTH, BAR_HEIGHT, Color.BLACK);
 
         window.addShape(horzLineTop);
         window.addShape(horzLineBottom);
         window.addShape(vertLineLeft);
         window.addShape(vertLineRight);
+        window.addShape(barLegend);
 
+        // Legend Text
         legendName = new TextShape(1200, 220, type + " Legend");
         legendName.setBackgroundColor(Color.WHITE);
-
-        bar = new Shape(1300, 500, 15, 120, Color.BLACK);
+        heardLikes = new TextShape(1240, 550, "Heard         Likes");
+        heardLikes.setBackgroundColor(Color.WHITE);
+        songTitle = new TextShape(1255, 425, "Song Title");
+        songTitle.setBackgroundColor(Color.WHITE);
 
         window.addShape(legendName);
-        window.addShape(bar);
+        window.addShape(heardLikes);
+        window.addShape(songTitle);
+
+        // Left side categories
+        category1 = new TextShape(1180, 320, "");
+        category2 = new TextShape(1180, 340, "");
+        category3 = new TextShape(1180, 360, "");
+        category4 = new TextShape(1180, 380, "");
+
+        category1.setBackgroundColor(Color.WHITE);
+        category2.setBackgroundColor(Color.WHITE);
+        category3.setBackgroundColor(Color.WHITE);
+        category4.setBackgroundColor(Color.WHITE);
+
+        category1.setForegroundColor(Color.PINK);
+        category2.setForegroundColor(Color.BLUE);
+        category3.setForegroundColor(Color.YELLOW);
+        category4.setForegroundColor(Color.GREEN);
 
         if (type.equals("Hobby")) {
+
+            category1.setText("Read");
+            category2.setText("Art");
+            category3.setText("Sports");
+            category4.setText("Music");
 
         }
         else if (type.equals("Major")) {
 
+            category1.setText("Comp Sci");
+            category2.setText("Other Eng");
+            category3.setText("Math/CMDA");
+            category4.setText("Other");
+
         }
         else { // type.equals("Region"))
 
+            category1.setText("Northeast US");
+            category2.setText("Southeast US");
+            category3.setText("The Rest of US");
+            category4.setText("Outside the US");
+
         }
+
+        window.addShape(category1);
+        window.addShape(category2);
+        window.addShape(category3);
+        window.addShape(category4);
 
     }
 
