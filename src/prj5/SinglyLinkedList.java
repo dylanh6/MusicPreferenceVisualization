@@ -1,16 +1,7 @@
 package prj5;
 
-<<<<<<< HEAD
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
-
-=======
-import java.util.Iterator;
-import java.util.NoSuchElementException;
->>>>>>> e4eabc8f886e13af742a3f485073ad835a470b8a
-
 /**
  * This is a basic implementation of a linked list
  *
@@ -248,7 +239,8 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         }
 
         // account for 2+ size
-        while (size() >= 2 && (current.next != null)) {
+        // while (size() >= 2 && (current.next != null)
+        while (size() >= 2) {
             if ((obj.equals(current.next.data))) {
                 if (current.next.next != null) {
                     current.setNext(current.next.next);
@@ -515,7 +507,7 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
          */
         @Override
         public boolean hasNext() {
-            return nextNode.next() != get(size()-1);
+            return nextNode.next!=null;
         }
 
 

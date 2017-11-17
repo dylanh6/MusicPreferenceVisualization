@@ -1,17 +1,26 @@
 package prj5;
 
 import student.TestCase;
-
+/**
+ * 
+ * @author Ian Connerney (Ianco)
+ * @version 2017.11.16
+ */
 public class SongListTest extends TestCase {
+    
+    private SongList songs;
 
-    SongList songs;
 
-
+    /**
+     * sets up test cases
+     */
     public void setUp() {
         songs = new SongList();
     }
 
-
+    /**
+     * tests sortBy method
+     */
     public void testsortBy() {
         Song song1 = new Song("Adam", "Adele", 2010, "Bravo");
         Song song2 = new Song("Bravo", "Adele", 2010, "Delta");
@@ -34,6 +43,16 @@ public class SongListTest extends TestCase {
 
         assertEquals(songs.get(0), song3);
         assertEquals(songs.get(3), song2);
+
+        songs.sortBy(SortEnum.ARTIST);
+        songs.sortBy(SortEnum.YEAR);
+    }
+    /**
+     * tests divide method
+     */
+    public void testdivide() {
+        assertEquals(95,songs.divide(100,95));
+        assertEquals(0,songs.divide(0,95));
 
     }
 }
