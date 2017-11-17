@@ -13,48 +13,21 @@ package prj5;
 public class Analyzer {
 
     private SinglyLinkedList<Person> personList;
-    private SinglyLinkedList<Song> songList;
+    private SongList songList;
 
     public static final String[] majors = { "Computer Science", "Other Engineering", "Math or CMDA", "Other" };
     public static final String[] regions = { "Northeast", "Southeast", "Outside of United States",
             "United States (other than Southeast or Northwest)" };
     public static final String[] hobbys = { "reading", "sports", "art", "music" };
 
-    public Analyzer(SinglyLinkedList<Person> personList, SinglyLinkedList<Song> songList) {
+    public Analyzer(SinglyLinkedList<Person> personList, SongList songList) {
         this.personList = personList;
         this.songList = songList;
         
         
     }
     
-    public String outPutStringHobby() {
-        StringBuilder build = new StringBuilder();
-        
-        for (int i = 0; i < songList.size(); i++) {
-            Song localSong = songList.get(i);
-            int[] data = localSong.getResponses();
-            
-            build.append("song title " + localSong.getName() + "\n");
-            build .append("song artist " + localSong.getArtist() + "\n");
-            build.append("song genre " + localSong.getGenre() + "\n");
-            build.append("song year " + String.valueOf(localSong.getYear()) + "\n");
-            build.append("heard\n");       
-                            
-            build.append("reading" + String.valueOf(divide(data[1], data[0])));
-            build.append(" art" + String.valueOf(divide(data[10], data[9])));
-            
-            build.append(" sports" + String.valueOf(divide(data[5], data[4])));
-            build.append(" music" + String.valueOf(divide(data[13], data[12])) + "\n");
-            build.append("likes\n");
-            build.append("reading" + String.valueOf(divide(data[3], data[2])));
-            build.append(" art" + String.valueOf(divide(data[11], data[10])));
-            build.append(" sports" + String.valueOf(divide(data[7], data[6])));
-            build.append(" music" + String.valueOf(divide(data[15], data[14])) + "\n\n");
-        }
-        
-        return build.toString();
-        
-    }
+    
     
     public int divide(float bottom, float top) {
         float percentage = 0;
@@ -72,7 +45,7 @@ public class Analyzer {
         return ret;
     }
 
-    public void representationCount(SinglyLinkedList<Person> personList, SinglyLinkedList<Song> songList) {
+    public void representationCount(SinglyLinkedList<Person> personList, SongList songList) {
         
         int rIncrement = 0;
         

@@ -1,11 +1,21 @@
 package prj5;
 
-import java.util.Comparator;
+<<<<<<< HEAD
+
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import linkedlist.LList;
-import java.util.Iterator;
 
+
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+
+=======
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+>>>>>>> ce9a438057ae81c431737c6fb23707bd7137b761
 /**
  * This is a basic implementation of a linked list
  *
@@ -243,7 +253,8 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         }
 
         // account for 2+ size
-        while (size() >= 2 && (current.next != null)) {
+        // while (size() >= 2 && (current.next != null)
+        while (size() >= 2) {
             if ((obj.equals(current.next.data))) {
                 if (current.next.next != null) {
                     current.setNext(current.next.next);
@@ -510,7 +521,7 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
          */
         @Override
         public boolean hasNext() {
-            return nextNode.next() != get(size()-1);
+            return nextNode.next!=null;
         }
 
 

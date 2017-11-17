@@ -2,6 +2,9 @@ package prj5;
 
 import java.util.Arrays;
 import student.TestCase;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 
 /**
  * 
@@ -11,6 +14,7 @@ import student.TestCase;
 
 public class SinglyLinkedListTest extends TestCase {
     private SinglyLinkedList<String> testList;
+    private Iterator<String> iter;
 
 
     /**
@@ -18,6 +22,7 @@ public class SinglyLinkedListTest extends TestCase {
      */
     public void setUp() {
         testList = new SinglyLinkedList<String>();
+        iter = testList.iterator();
     }
 
 
@@ -131,8 +136,36 @@ public class SinglyLinkedListTest extends TestCase {
         testList.add("boom");
         testList.remove("taquito");
         assertEquals(testList.toString(), "{burrito, taco, boom}");
-
+        testList.remove("boom");
+        
         Exception exception = null;
+        try {
+            iter.remove();
+        }
+        catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalStateException);
+        
+        iter = testList.iterator();
+        assertTrue(iter.hasNext());
+        iter.next();
+        assertFalse(iter.hasNext());
+        iter.remove();
+        assertEquals(testList.toString(), "{burrito}");
+        
+        exception = null;
+        try {
+            iter.next();
+        }
+        catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof NoSuchElementException);
+
+        exception = null;
         try {
             testList.remove(7);
         }
@@ -162,6 +195,7 @@ public class SinglyLinkedListTest extends TestCase {
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IndexOutOfBoundsException);
+        
         
     }
 

@@ -86,6 +86,9 @@ public class GUIDisplayWindow {
     }
 
 
+    /**
+     * This method creates the buttons in the GUI
+     */
     private void createButtons() {
 
         prev = new Button("Prev");
@@ -241,6 +244,9 @@ public class GUIDisplayWindow {
 
     /**
      * This method prints the correct legend
+     * 
+     * @param type
+     *            This is the type of legend to be printed
      */
     public void printLegend(String type) {
 
@@ -427,7 +433,6 @@ public class GUIDisplayWindow {
             window.addShape(dataBar);
 
         }
-
 
     }
 
