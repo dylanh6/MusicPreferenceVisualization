@@ -60,7 +60,9 @@ public class FileReader {
         Scanner in = new Scanner(new File(personFile));
 
         SinglyLinkedList<Person> personList = new SinglyLinkedList<Person>();
-
+        
+        int counter= 0;
+        
         in.nextLine();
         while (in.hasNextLine()) {
             String line = in.nextLine();
@@ -79,7 +81,7 @@ public class FileReader {
 
             for (int i = 0; i < songCount; i++) {
                 responses[i] = split[i + 5];
-
+                
             }
 
             Person localPerson = new Person(id, date, major, region, hobby,

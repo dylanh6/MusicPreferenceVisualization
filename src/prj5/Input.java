@@ -31,15 +31,15 @@ public class Input {
 
             thisList.sortBy(SortEnum.GENRE);
 
-            String outputGenre = a.outPutStringHobby();
+            String outputGenre = thisList.outPutStringHobby();
 
             thisList.sortBy(SortEnum.TITLE);
 
-            String outputTitle = a.outPutStringHobby();
+            String outputTitle = thisList.outPutStringHobby();
 
             System.out.print(outputGenre + outputTitle);
 
-            FileReader f = new FileReader("SongListTest2.csv", "MusicSurveyDataTest2.csv");
+            FileReader f = new FileReader("SongListNoGenreRepeats.csv", "MusicSurveyDataNoGenreRepeats.csv");
 
             Analyzer h = new Analyzer(f.getPersonList(), f.getSongList());
 
@@ -55,7 +55,7 @@ public class Input {
 
             String title = newList.outPutStringHobby();
 
-            // System.out.println(genre + title);
+            //System.out.println(genre + title);
         } catch (Exception e) {
             System.out.print(e);
 

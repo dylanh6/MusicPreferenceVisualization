@@ -113,7 +113,12 @@ public class SongList extends SinglyLinkedList<Song> {
             build.append("heard\n");       
                             
             build.append("reading" + String.valueOf(divide(data[1], data[0])));
-            build.append(" art" + String.valueOf(divide(data[10], data[9])));
+            
+            int top2 = data[10];
+            int bottom2 = data[11];
+            int a = divide(bottom2, top2);
+            
+            build.append(" art" + String.valueOf(a));
             
             build.append(" sports" + String.valueOf(divide(data[5], data[4])));
             build.append(" music" + String.valueOf(divide(data[13], data[12])) + "\n");
@@ -121,7 +126,13 @@ public class SongList extends SinglyLinkedList<Song> {
             build.append("reading" + String.valueOf(divide(data[3], data[2])));
             build.append(" art" + String.valueOf(divide(data[11], data[10])));
             build.append(" sports" + String.valueOf(divide(data[7], data[6])));
-            build.append(" music" + String.valueOf(divide(data[15], data[14])) + "\n\n");           
+            
+            
+            int top = data[14];
+            int bottom = data[15];
+            
+            int y = divide(bottom, top);
+            build.append(" music" + String.valueOf(y) + "\n\n");           
             
            
         }
