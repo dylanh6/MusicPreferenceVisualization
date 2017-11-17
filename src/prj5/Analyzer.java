@@ -13,14 +13,14 @@ package prj5;
 public class Analyzer {
 
     private SinglyLinkedList<Person> personList;
-    private SinglyLinkedList<Song> songList;
+    private SongList songList;
 
     public static final String[] majors = { "Computer Science", "Other Engineering", "Math or CMDA", "Other" };
     public static final String[] regions = { "Northeast", "Southeast", "Outside of United States",
             "United States (other than Southeast or Northwest)" };
     public static final String[] hobbys = { "reading", "sports", "art", "music" };
 
-    public Analyzer(SinglyLinkedList<Person> personList, SinglyLinkedList<Song> songList) {
+    public Analyzer(SinglyLinkedList<Person> personList, SongList songList) {
         this.personList = personList;
         this.songList = songList;
         
@@ -29,6 +29,8 @@ public class Analyzer {
     
     public String outPutStringHobby() {
         StringBuilder build = new StringBuilder();
+        
+        int counter = 0;
         
         for (int i = 0; i < songList.size(); i++) {
             Song localSong = songList.get(i);
@@ -50,6 +52,8 @@ public class Analyzer {
             build.append(" art" + String.valueOf(divide(data[11], data[10])));
             build.append(" sports" + String.valueOf(divide(data[7], data[6])));
             build.append(" music" + String.valueOf(divide(data[15], data[14])) + "\n\n");
+            
+            
         }
         
         return build.toString();
@@ -72,7 +76,7 @@ public class Analyzer {
         return ret;
     }
 
-    public void representationCount(SinglyLinkedList<Person> personList, SinglyLinkedList<Song> songList) {
+    public void representationCount(SinglyLinkedList<Person> personList, SongList songList) {
         
         int rIncrement = 0;
         

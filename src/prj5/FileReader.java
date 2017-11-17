@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class FileReader {
 
-    private SinglyLinkedList<Song> songList;
+    private SongList songList;
     private SinglyLinkedList<Person> personList;
 
 
@@ -28,8 +28,8 @@ public class FileReader {
     }
 
 
-    public SinglyLinkedList<Song> songReader(String songFile) throws Exception {
-        SinglyLinkedList<Song> localList = new SinglyLinkedList<Song>();
+    public SongList songReader(String songFile) throws Exception {
+        SongList localList = new SongList();
         Scanner in = new Scanner(new File(songFile));
 
         in.nextLine();
@@ -73,7 +73,7 @@ public class FileReader {
             String region = split[3];
             String hobby = split[4];
 
-            int songCount = songList.size() + 5;
+            int songCount = songList.size() * 2;
 
             String[] responses = new String[songCount];
 
@@ -93,7 +93,7 @@ public class FileReader {
     }
 
 
-    public SinglyLinkedList<Song> getSongList() {
+    public SongList getSongList() {
         return songList;
     }
 

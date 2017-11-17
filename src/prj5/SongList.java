@@ -77,6 +77,55 @@ public class SongList extends SinglyLinkedList<Song>{
         
         
     }
+    
+    public String outPutStringHobby() {
+        StringBuilder build = new StringBuilder();
+        
+        int counter = 0;
+        
+        for (int i = 0; i < this.size(); i++) {
+            Song localSong = this.get(i);
+            int[] data = localSong.getResponses();
+            
+            build.append("song title " + localSong.getName() + "\n");
+            build .append("song artist " + localSong.getArtist() + "\n");
+            build.append("song genre " + localSong.getGenre() + "\n");
+            build.append("song year " + String.valueOf(localSong.getYear()) + "\n");
+            build.append("heard\n");       
+                            
+            build.append("reading" + String.valueOf(divide(data[1], data[0])));
+            build.append(" art" + String.valueOf(divide(data[10], data[9])));
+            
+            build.append(" sports" + String.valueOf(divide(data[5], data[4])));
+            build.append(" music" + String.valueOf(divide(data[13], data[12])) + "\n");
+            build.append("likes\n");
+            build.append("reading" + String.valueOf(divide(data[3], data[2])));
+            build.append(" art" + String.valueOf(divide(data[11], data[10])));
+            build.append(" sports" + String.valueOf(divide(data[7], data[6])));
+            build.append(" music" + String.valueOf(divide(data[15], data[14])) + "\n\n");           
+            
+           
+        }
+        
+        return build.toString();
+        
+    }
+    
+    public int divide(float bottom, float top) {
+        float percentage = 0;
+        
+        if (bottom != 0) {
+            percentage = (top / bottom) * 100;
+            
+        }
+        else {
+            percentage = 0;
+        }
+        
+        int ret = (int) percentage;
+        
+        return ret;
+    }
 
     
     
