@@ -1,10 +1,15 @@
 package prj5;
 
+<<<<<<< HEAD
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 
+=======
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+>>>>>>> e4eabc8f886e13af742a3f485073ad835a470b8a
 
 /**
  * This is a basic implementation of a linked list
