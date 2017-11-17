@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import linkedlist.SinglyLinkedList;
+
 
 /**
  * FileReader class class that reads the input files and stores the objects
@@ -65,7 +65,7 @@ public class FileReader {
         while (in.hasNextLine()) {
             String line = in.nextLine();
 
-            String[] split = line.split(" *, *");
+            String[] split = line.split(",", -1);
 
             int id = Integer.parseInt(split[0]);
             String date = split[1];

@@ -16,6 +16,7 @@ public class Song {
     private String artist;
     private int year;
     private String genre;
+    private int[] responseArray;
     
     /**
      * constructor that sets up a new song
@@ -61,6 +62,21 @@ public class Song {
     public String getGenre() {
         return genre;
     }
+    
+    /**
+     * gets the hobby info
+     * @return returns hobby
+     */
+    public int[] getResponses() {
+        return responseArray;
+    }
+    
+    public void setResponseArray(int[] anArray) {
+        responseArray = anArray;
+    }
+        
+
+    
     /**
      * toString method
      * @return returns string
@@ -77,5 +93,7 @@ public class Song {
         
         return builder.toString();
     }
+    
+    
     
 }

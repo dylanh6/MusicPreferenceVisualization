@@ -31,4 +31,37 @@ public class Region {
         this.otherHeard = otherHeard;
         this.otherYes = otherYes;
     }
+
+    public int getSeHeard() {
+        return seHeard;
+    }
+
+    public int getSeYes() {
+        return seYes;
+    }
+
+    public int getNeHeard() {
+        return neHeard;
+    }
+
+    public int getNeYes() {
+        return neYes;
+    }
+
+    public int getUsHeard() {
+        return usHeard;
+    }
+
+    public int getUsYes() {
+        return usYes;
+    }
+
+    public int getOtherHeard() {
+        return otherHeard;
+    }
+
+    public int getOtherYes() {
+        return otherYes;
+    }
+
 }

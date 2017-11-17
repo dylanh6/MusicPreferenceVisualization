@@ -20,6 +20,7 @@ public class Input {
      */
     public static void main(String[] args) throws Exception {
 
+<<<<<<< HEAD
         FileReader p = new FileReader("SongListTest1.csv",
             "MusicSurveyDataTest1.csv");
 
@@ -32,6 +33,26 @@ public class Input {
         System.out.println(personTest.remove(1).getIdNum());
 
         GUIDisplayWindow window = new GUIDisplayWindow();
+=======
+        if (args.length == 1) {
+            FileReader fileIn = new FileReader(args[0], args[1]);
+            Analyzer a = new Analyzer(fileIn.getPersonList(), fileIn.getSongList());
+            a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
+            System.out.println(a.outPutStringHobby());
+        }
+        else {
+
+            FileReader f = new FileReader("SongListTest1.csv", "MusicSurveyDataTest1.csv");
+            
+            Analyzer h = new Analyzer(f.getPersonList(), f.getSongList());
+
+            h.representationCount(f.getPersonList(), f.getSongList());
+
+            System.out.println(h.outPutStringHobby());
+
+            int i = 0;
+        }
+>>>>>>> 81d325ce6bb683a589771e9783d7e0e2e616ea84
 
         // for (int i = 1; i < personTest.getLength() - 1; i++) {
         // System.out.println(personTest.remove(i).getIdNum());

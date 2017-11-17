@@ -46,6 +46,8 @@ public class GUIDisplayWindow {
     private static int BAR_X;
     private static int BAR_Y;
     private Shape bar;
+    private Shape songName;
+    private Shape artist;
     private Shape dataBar;
     private static final int DATABAR_HEIGHT = BAR_HEIGHT / 4;
 
@@ -351,6 +353,15 @@ public class GUIDisplayWindow {
 
             }
 
+            songName = new TextShape(BAR_X * widthMulti - BAR_WIDTH - 10, BAR_Y
+                * heightMulti - 60, "Song Name");
+            songName.setBackgroundColor(Color.WHITE);
+            artist = new TextShape(BAR_X * widthMulti - BAR_WIDTH - 10, BAR_Y
+                * heightMulti - 30, "Artist");
+            artist.setBackgroundColor(Color.WHITE);
+            window.addShape(songName);
+            window.addShape(artist);
+
             bar = new Shape(BAR_X * widthMulti, BAR_Y * heightMulti, BAR_WIDTH,
                 BAR_HEIGHT, Color.BLACK);
             window.addShape(bar);
@@ -417,52 +428,6 @@ public class GUIDisplayWindow {
 
         }
 
-        /*
-         * int barSize = 0;
-         * 
-         * Color color = null;
-         * 
-         * // print left
-         * for (int i = 1; i < 5; i++) {
-         * 
-         * barSize = i * 10;
-         * 
-         * dataBar = new Shape(BAR_X - barSize, BAR_Y + BAR_HEIGHT / i, barSize,
-         * DATABAR_HEIGHT, color);
-         * 
-         * window.addShape(dataBar);
-         * }
-         * 
-         * // print right
-         * for (int i = 1; i < 5; i++) {
-         * 
-         * barSize = i * 10 + 50;
-         * 
-         * if (i == 1) {
-         * color = Color.PINK;
-         * 
-         * }
-         * else if (i == 2) {
-         * color = Color.BLUE;
-         * 
-         * }
-         * else if (i == 3) {
-         * color = Color.YELLOW;
-         * 
-         * }
-         * else {// (i == 3) {
-         * 
-         * color = Color.GREEN;
-         * 
-         * }
-         * 
-         * dataBar = new Shape(BAR_X + BAR_WIDTH, BAR_Y / (BAR_HEIGHT) / i,
-         * barSize, DATABAR_HEIGHT, color);
-         * 
-         * window.addShape(dataBar);
-         * 
-         * }
-         */
 
     }
 
