@@ -1,5 +1,7 @@
 package prj5;
 
+import java.util.EmptyStackException;
+
 import student.TestCase;
 /**
  * 
@@ -30,8 +32,10 @@ public class SongListTest extends TestCase {
         songs.add(song2);
         songs.add(song1);
         songs.add(song3);
+        
+        SongList a = new SongList();
 
-        assertEquals(songs.get(0), song4);
+        assertEquals(songs.get(0), song4); 
         assertEquals(songs.get(3), song3);
 
         songs.sortBy(SortEnum.TITLE);
@@ -46,6 +50,12 @@ public class SongListTest extends TestCase {
 
         songs.sortBy(SortEnum.ARTIST);
         songs.sortBy(SortEnum.YEAR);
+        
+     
+        a.sortBy(SortEnum.TITLE);
+
+      
+        
     }
     /**
      * tests divide method

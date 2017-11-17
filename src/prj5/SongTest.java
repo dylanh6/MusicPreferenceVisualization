@@ -20,7 +20,7 @@ public class SongTest extends TestCase {
      * setUp method for 
      */
     public void setUp() {
-        whiteRoom = new Song("White Room", "Cream", 1968, "Rock");
+        whiteRoom = new Song("White Room", "Cream", 1968, "Rock"); 
     }
     /**
      * test method for getName

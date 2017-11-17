@@ -94,12 +94,18 @@ public class FileReader {
         return personList;
     }
 
-
+    /**
+     * gets the song list
+     * @return return a songList
+     */
     public SongList getSongList() {
         return songList;
     }
 
-
+    /**
+     * gets person list
+     * @return returns a personlist
+     */
     public SinglyLinkedList<Person> getPersonList() {
         return personList;
     }

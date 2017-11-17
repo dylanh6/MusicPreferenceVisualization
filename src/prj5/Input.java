@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
  * @version Nov 16, 2017
  *
  */
-public class Input {
+public class Input { 
     /**
      * Main method for the program
      * 

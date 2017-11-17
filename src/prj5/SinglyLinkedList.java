@@ -1,6 +1,11 @@
 package prj5;
 
-<<<<<<< HEAD
+
+
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 
 
 import java.util.Iterator;
@@ -11,48 +16,20 @@ import java.util.NoSuchElementException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
-=======
-import java.util.Iterator;
-import java.util.NoSuchElementException;
->>>>>>> ce9a438057ae81c431737c6fb23707bd7137b761
 /**
- * This is a basic implementation of a linked list
- *
- * @author Mark Wiggans (mmw125)
- * @version 4/14/2015
- * @author Christina Olk (colk)
- * @version 9.4.15
- * @author Grace Fields
- * @version 10.26.15
- * @author Jamal Ahmad (jamal93)
- * @version 10/15/2016
- * @author JMargaret Ellis (maellis1)
- * @version 03/16/2017
- * 
- * @param <E>
- *            This is the type of object that this class will store
+ * basic singlylinked list
+ * @author dylan hitt dylanh6
+ * @version nov 16, 2017
+ * @param <E> accepts generic
  */
-
 public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
 
     /**
-     * This represents a node in a singly linked list. This node stores data
-     * along with having a pointer to the next node in the list
-     *
-     * @param <D>
-     *            This is the type of object that this class will store
-     * @author Mark Wiggans (mmw125)
-     * @author Christina Olk (colk)
-     * @author maellis1
-     * @author Jamal Ahmad (jamal93)
-     * @author Margaret Ellis (maellis1)
      * 
-     * @version 4/14/2015
-     * @version 9.4.15
-     * @version 10.29.15
-     * @version 10/15/2016
-     * @version 03/17/2017
+     * @author dylan hitt dylanh6
+     * @version Nov 16, 2017
+     *
+     * @param <E>
      */
     public static class Node<E> {
 
@@ -561,7 +538,7 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
                 throw new IllegalStateException("Next has not been called yet");
             }
             else {
-                previousNode.setNext(nextNode.next());
+                previousNode.setNext(nextNode.next()); 
                 size--;
                 nextCalled = false;
             }

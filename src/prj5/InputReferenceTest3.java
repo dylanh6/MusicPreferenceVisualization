@@ -18,7 +18,7 @@ public class InputReferenceTest3 extends student.TestCase {
      */
     public void setUp() {
 
-        fileData = null;
+        fileData = null; 
     }
 
     

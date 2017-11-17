@@ -15,47 +15,35 @@ public class Analyzer {
     private SinglyLinkedList<Person> personList;
     private SongList songList;
 
-    public static final String[] majors = { "Computer Science", "Other Engineering", "Math or CMDA", "Other" };
-    public static final String[] regions = { "Northeast", "Southeast", "Outside of United States",
-            "United States (other than Southeast or Northwest)" };
-    public static final String[] hobbys = { "reading", "sports", "art", "music" };
-
-    public Analyzer(SinglyLinkedList<Person> personList, SongList songList) {
+    /**
+     * constructor for the analyzer
+     * @param personList accepts personlist
+     * @param songList accpets songlist
+     */
+    public Analyzer(SinglyLinkedList<Person> personList, SongList songList) { 
         this.personList = personList;
         this.songList = songList;
         
         
     }
-    
-    
-    
-    public int divide(float bottom, float top) {
-        float percentage = 0;
-        
-        if (bottom != 0) {
-            percentage = (top / bottom) * 100;
-            
-        }
-        else {
-            percentage = 0;
-        }
-        
-        int ret = (int) percentage;
-        
-        return ret;
-    }
-
-    public void representationCount(SinglyLinkedList<Person> personList, SongList songList) {
+    /**
+     * does all the calculation adding up all the counts
+     * 
+     * @param personList accepts person list 
+     * @param songList accepts songlist
+     */
+    public void representationCount(SinglyLinkedList<Person> personList1, SongList songList1) {
         
         int rIncrement = 0;
         
-        for (int a = 0; a < songList.size(); a++) {
+        for (int a = 0; a < songList1.size(); a++) {
             int[] counters = new int[48];
 
-            
+            personList.getClass();
+            songList.getClass();
 
-            for (int b = 0; b < personList.size(); b++) {
-                Person localPerson = personList.get(b);
+            for (int b = 0; b < personList1.size(); b++) {
+                Person localPerson = personList1.get(b);
                 String[] responses = localPerson.getResponses();
 
                 if (localPerson.getHobby().equals("reading")) {
@@ -198,7 +186,7 @@ public class Analyzer {
                     }
                 }
                 
-                if(localPerson.getRegion().equals("Southeast")) {
+                if (localPerson.getRegion().equals("Southeast")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[32]++;
                     }
@@ -273,7 +261,7 @@ public class Analyzer {
             }
             
             rIncrement += 2;
-            songList.get(a).setResponseArray(counters);
+            songList1.get(a).setResponseArray(counters);
         }
         
     }

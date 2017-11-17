@@ -14,7 +14,7 @@ public class SongList extends SinglyLinkedList<Song> {
      */
     public SongList() {
         super();
-    }
+    } 
 
 
     /**
@@ -30,16 +30,16 @@ public class SongList extends SinglyLinkedList<Song> {
             insertionSort(comparer);
 
         }
-        else if (sortBy == SortEnum.ARTIST) {
+        //else if (sortBy == SortEnum.ARTIST) { 
 
-        }
+        //}
         else if (sortBy == SortEnum.GENRE) {
             comparer = new CompareByGenre();
             insertionSort(comparer);
         }
-        else if (sortBy == SortEnum.YEAR) {
+        //else if (sortBy == SortEnum.YEAR) {
 
-        }
+        //}
     }
 
 
@@ -51,9 +51,9 @@ public class SongList extends SinglyLinkedList<Song> {
      */
     private void insertionSort(Comparator<Song> comparer) {
         if (size() > 1) {
-            assert head != null;
+            
             Node<Song> unsortedPart = head.next();
-            assert unsortedPart != null;
+            
             head.setNext(null);
 
             while (unsortedPart != null) {
@@ -61,8 +61,10 @@ public class SongList extends SinglyLinkedList<Song> {
                 unsortedPart = unsortedPart.next();
                 insertInOrder(nodeToInsert, comparer);
             }
+           
 
         }
+        
     }
 
 
@@ -96,7 +98,10 @@ public class SongList extends SinglyLinkedList<Song> {
         }
 
     }
-    
+    /**
+     * represents hobby as a string
+     * @return returns a String
+     */
     public String outPutStringHobby() {
         StringBuilder build = new StringBuilder();
         

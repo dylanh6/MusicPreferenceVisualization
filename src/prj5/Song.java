@@ -30,7 +30,7 @@ public class Song {
     public Song(String name, String artist, int year, String genre) {
         this.name = name;
         this.artist = artist;
-        this.genre = genre;
+        this.genre = genre; 
         this.year = year;
                      
     }
@@ -74,9 +74,7 @@ public class Song {
     public void setResponseArray(int[] anArray) {
         responseArray = anArray;
     }
-        
-
-    
+     
     /**
      * toString method
      * @return returns string

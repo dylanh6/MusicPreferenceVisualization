@@ -294,7 +294,7 @@ public class GUIDisplayWindow {
             category1.setText("Northeast US");
             category2.setText("Southeast US");
             category3.setText("The Rest of US");
-            category4.setText("Outside the US");
+            category4.setText("Outside the US"); 
 
         }
 
