@@ -3,7 +3,6 @@
  */
 package prj5;
 
-import java.io.FileNotFoundException;
 
 /**
  * Runs the the main method for the program
@@ -24,7 +23,7 @@ public class Input {
 
         try {
             FileReader fileIn = new FileReader(args[1], args[0]);
-            Analyzer a = new Analyzer(fileIn.getPersonList(), fileIn.getSongList());
+            Analyzer a = new Analyzer();
             a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
 
             SongList thisList = fileIn.getSongList();
@@ -41,7 +40,7 @@ public class Input {
 
             FileReader f = new FileReader("SongListNoGenreRepeats.csv", "MusicSurveyDataNoGenreRepeats.csv");
 
-            Analyzer h = new Analyzer(f.getPersonList(), f.getSongList());
+            Analyzer h = new Analyzer();
 
             h.representationCount(f.getPersonList(), f.getSongList());
 
@@ -59,9 +58,6 @@ public class Input {
         } catch (Exception e) {
             System.out.print(e);
 
-            // for (int i = 1; i < personTest.getLength() - 1; i++) {
-            // System.out.println(personTest.remove(i).getIdNum());
-            // }
 
         }
     }

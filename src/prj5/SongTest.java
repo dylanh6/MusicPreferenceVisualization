@@ -3,6 +3,8 @@
  */
 package prj5;
 
+import java.util.Arrays;
+
 import student.TestCase;
 
 /**
@@ -20,7 +22,7 @@ public class SongTest extends TestCase {
      * setUp method for 
      */
     public void setUp() {
-        whiteRoom = new Song("White Room", "Cream", 1968, "Rock"); 
+        whiteRoom = new Song("White Room", "Cream", 1968, "Rock");  
     }
     /**
      * test method for getName
@@ -46,7 +48,20 @@ public class SongTest extends TestCase {
     public void testGetGenre() {
         assertEquals("Rock", whiteRoom.getGenre());
     }
+    /**
+     * test for responseArray
+     */
+    public void testSetResponseArray() {
+        int[] i = new int[] {3, 4, 4};
+        
+        whiteRoom.setResponseArray(i);
+        
+        assertTrue(Arrays.equals(i, whiteRoom.getResponses()));
+    }
     
+    /**
+     * test to string
+     */
     public void testToString() {
         String myString = "White Room by Cream, Year: 1968, Genre: Rock";
         

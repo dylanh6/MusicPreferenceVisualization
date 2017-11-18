@@ -12,35 +12,33 @@ package prj5;
  */
 public class Analyzer {
 
-    private SinglyLinkedList<Person> personList;
-    private SongList songList;
-
     /**
      * constructor for the analyzer
-     * @param personList accepts personlist
-     * @param songList accpets songlist
-     */
-    public Analyzer(SinglyLinkedList<Person> personList, SongList songList) { 
-        this.personList = personList;
-        this.songList = songList;
-        
-        
-    }
-    /**
-     * does all the calculation adding up all the counts
      * 
-     * @param personList accepts person list 
-     * @param songList accepts songlist
+     * 
      */
-    public void representationCount(SinglyLinkedList<Person> personList1, SongList songList1) {
-        
+    public Analyzer() {
+        // nothing needs to be here
+
+    }
+
+    /**
+     * does all the calculations adding up all the counts
+     * 
+     * @param personList1
+     *            accepts personLlist
+     * @param songList1
+     *            accepts songList
+     */
+    public void representationCount(SinglyLinkedList<Person> personList1, 
+            SongList songList1) {
+
         int rIncrement = 0;
-        
+
         for (int a = 0; a < songList1.size(); a++) {
             int[] counters = new int[48];
 
-            personList.getClass();
-            songList.getClass();
+            
 
             for (int b = 0; b < personList1.size(); b++) {
                 Person localPerson = personList1.get(b);
@@ -91,14 +89,20 @@ public class Analyzer {
                     }
 
                     if (responses[rIncrement + 1].equals("Yes")) {
+
+                       
+
                         counters[10]++;
                     }
 
                     if (!responses[rIncrement + 1].equals("")) {
                         counters[11]++;
+
+                      
+
                     }
                 }
-                else {
+                else if (localPerson.getHobby().equals("music")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[12]++;
                     }
@@ -116,7 +120,7 @@ public class Analyzer {
                     }
 
                 }
-                
+
                 if (localPerson.getMajor().equals("Computer Science")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[16]++;
@@ -134,7 +138,7 @@ public class Analyzer {
                         counters[19]++;
                     }
                 }
-                else if (localPerson.getMajor().equals("Math of CMDA")) {
+                else if (localPerson.getMajor().equals("Math or CMDA")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[20]++;
                     }
@@ -185,7 +189,7 @@ public class Analyzer {
                         counters[31]++;
                     }
                 }
-                
+
                 if (localPerson.getRegion().equals("Southeast")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[32]++;
@@ -220,8 +224,9 @@ public class Analyzer {
                         counters[39]++;
                     }
                 }
-                else if (localPerson.getRegion().equals("United States "
-                        + "(other than Southeast or Northwest)")) {
+                else if (localPerson.getRegion().equals("United Sta"
+                        + "tes " + "(other than "
+                        + "Southeast or Northwest)")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[40]++;
                     }
@@ -254,16 +259,14 @@ public class Analyzer {
                     if (!responses[rIncrement + 1].equals("")) {
                         counters[47]++;
                     }
-                }               
-                
-                
-                
+                }
+
             }
-            
+
             rIncrement += 2;
             songList1.get(a).setResponseArray(counters);
         }
-        
+
     }
-    
+
 }

@@ -1,6 +1,5 @@
 package prj5;
 
-import java.util.EmptyStackException;
 
 import student.TestCase;
 /**
@@ -61,8 +60,8 @@ public class SongListTest extends TestCase {
      * tests divide method
      */
     public void testdivide() {
-        assertEquals(95,songs.divide(100,95));
-        assertEquals(0,songs.divide(0,95));
+        assertEquals(95, songs.divide(100, 95));
+        assertEquals(0, songs.divide(0, 95));
 
     }
 }

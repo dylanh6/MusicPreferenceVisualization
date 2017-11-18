@@ -38,8 +38,9 @@ public class PersonTest extends TestCase {
         
         try {
             date1 = dateFormat.parse("10/19/15 14:45");
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
+        } 
+        catch (ParseException e) {
+            
             e.printStackTrace();
         }
                
