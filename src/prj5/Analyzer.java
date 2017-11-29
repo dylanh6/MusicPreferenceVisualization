@@ -17,7 +17,7 @@ public class Analyzer {
      * 
      * 
      */
-    public Analyzer() {
+    public Analyzer() { 
         // nothing needs to be here
 
     }
@@ -89,17 +89,11 @@ public class Analyzer {
                     }
 
                     if (responses[rIncrement + 1].equals("Yes")) {
-
-                       
-
                         counters[10]++;
                     }
 
                     if (!responses[rIncrement + 1].equals("")) {
                         counters[11]++;
-
-                      
-
                     }
                 }
                 else if (localPerson.getHobby().equals("music")) {
@@ -172,7 +166,7 @@ public class Analyzer {
                         counters[27]++;
                     }
                 }
-                else {
+                else if (localPerson.getMajor().equals("Other")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[28]++;
                     }
@@ -243,7 +237,7 @@ public class Analyzer {
                         counters[43]++;
                     }
                 }
-                else {
+                else if (localPerson.getRegion().equals(("Outside of United States"))) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[44]++;
                     }

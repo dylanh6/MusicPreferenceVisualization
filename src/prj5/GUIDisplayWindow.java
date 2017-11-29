@@ -285,7 +285,7 @@ public class GUIDisplayWindow {
 
             category1.setText("Comp Sci");
             category2.setText("Other Eng");
-            category3.setText("Math/CMDA");
+            category3.setText("Math/CMDA"); 
             category4.setText("Other");
 
         }

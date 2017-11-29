@@ -27,7 +27,7 @@ public class Input {
             a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
 
             SongList thisList = fileIn.getSongList();
-
+ 
             thisList.sortBy(SortEnum.GENRE);
 
             String outputGenre = thisList.outPutStringHobby();

@@ -28,9 +28,9 @@ public class Song {
      */
     public Song(String name, String artist, int year, String genre) {
         this.name = name;
-        this.artist = artist; 
+        this.artist = artist;  
         this.genre = genre; 
-        this.year = year;
+        this.year = year; 
                      
     }
     /**
