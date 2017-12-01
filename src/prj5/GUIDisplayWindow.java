@@ -58,6 +58,18 @@ public class GUIDisplayWindow {
         createButtons();
 
         printLegend("Ma");
+        
+        try {
+            FileReader fileIn = new FileReader("SongListNoGenreRepeats.csv", "MusicSurveyDataNoGenreRepeats.csv");
+            Analyzer a = new Analyzer();
+            a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
+            
+            SongList e = fileIn.getSongList();
+        }
+        catch (Exception e) {
+            System.out.print(e);
+        }
+        
 
     }
 
