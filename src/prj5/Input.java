@@ -27,9 +27,10 @@ public class Input {
         SinglyLinkedList<Song> test = p.getSongList();
 
         SinglyLinkedList<Person> personTest = p.getPersonList();
+        
+        personTest.rem
 
-        System.out.println(test.remove(1).getName());
-
+        System.out.println(personTest.get(index)
         System.out.println(personTest.remove(1).getIdNum());
 
         GUIDisplayWindow window = new GUIDisplayWindow();
