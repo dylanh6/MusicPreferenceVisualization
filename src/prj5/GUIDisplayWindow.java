@@ -67,25 +67,23 @@ public class GUIDisplayWindow {
 
         createButtons();
 
-<<<<<<< HEAD
         printLegend("Hobby");
 
         printGylph();
-=======
+
         printLegend("Ma");
-        
+
         try {
-            FileReader fileIn = new FileReader("SongListNoGenreRepeats.csv", "MusicSurveyDataNoGenreRepeats.csv");
+            FileReader fileIn = new FileReader("SongListNoGenreRepeats.csv",
+                "MusicSurveyDataNoGenreRepeats.csv");
             Analyzer a = new Analyzer();
             a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
-            
+
             SongList e = fileIn.getSongList();
         }
         catch (Exception e) {
             System.out.print(e);
         }
-        
->>>>>>> 4337b2fea9a752554acd1d8826a5d8b1b3fc1a30
 
     }
 
@@ -319,7 +317,7 @@ public class GUIDisplayWindow {
 
             category1.setText("Comp Sci");
             category2.setText("Other Eng");
-            category3.setText("Math/CMDA"); 
+            category3.setText("Math/CMDA");
             category4.setText("Other");
 
         }
@@ -328,7 +326,7 @@ public class GUIDisplayWindow {
             category1.setText("Northeast US");
             category2.setText("Southeast US");
             category3.setText("The Rest of US");
-            category4.setText("Outside the US"); 
+            category4.setText("Outside the US");
 
         }
 
