@@ -61,7 +61,9 @@ public class FileReader {
 
         SinglyLinkedList<Person> personList = new SinglyLinkedList<Person>();
         
-        int counter= 0;
+        int personcounter= 0;
+        int heardCounter = 0;
+        int heardYesCounter = 0;
         
         in.nextLine();
         while (in.hasNextLine()) {
@@ -83,6 +85,18 @@ public class FileReader {
                 responses[i] = split[i + 5];
                 
             }
+            
+            if (hobby.equals("art")) {
+                personcounter++;
+                if (!responses[0].equals("")) {
+                    heardCounter++;
+                }
+                if (responses[0].equals("Yes")) {
+                    heardYesCounter++;
+                }
+                //System.out.println(personcounter);
+                //System.out.println(heardCounter);
+            }
 
             Person localPerson = new Person(id, date, major, region, hobby,
                 responses);
@@ -94,12 +108,18 @@ public class FileReader {
         return personList;
     }
 
-
+    /**
+     * gets the song list
+     * @return return a songList
+     */
     public SongList getSongList() {
         return songList;
     }
 
-
+    /**
+     * gets person list
+     * @return returns a personlist
+     */
     public SinglyLinkedList<Person> getPersonList() {
         return personList;
     }

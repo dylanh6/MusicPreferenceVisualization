@@ -11,7 +11,8 @@ public enum SortEnum {
     /**
      * unused constructor
      */
-    private SortEnum() {
+    private SortEnum() { 
     }
     
 }
+ 

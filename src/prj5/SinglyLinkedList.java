@@ -1,58 +1,24 @@
 package prj5;
 
-<<<<<<< HEAD
-
-
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
-
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-
-
-=======
-import java.util.Iterator;
-import java.util.NoSuchElementException;
->>>>>>> ce9a438057ae81c431737c6fb23707bd7137b761
 /**
- * This is a basic implementation of a linked list
- *
- * @author Mark Wiggans (mmw125)
- * @version 4/14/2015
- * @author Christina Olk (colk)
- * @version 9.4.15
- * @author Grace Fields
- * @version 10.26.15
- * @author Jamal Ahmad (jamal93)
- * @version 10/15/2016
- * @author JMargaret Ellis (maellis1)
- * @version 03/16/2017
+ * basic singlylinked list
  * 
+ * @author dylan hitt dylanh6
+ * @version nov 16, 2017
  * @param <E>
- *            This is the type of object that this class will store
+ *            accepts generic
  */
-
-public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
+public class SinglyLinkedList<E> implements LList<E>, Iterable<E> {
 
     /**
-     * This represents a node in a singly linked list. This node stores data
-     * along with having a pointer to the next node in the list
-     *
-     * @param <D>
-     *            This is the type of object that this class will store
-     * @author Mark Wiggans (mmw125)
-     * @author Christina Olk (colk)
-     * @author maellis1
-     * @author Jamal Ahmad (jamal93)
-     * @author Margaret Ellis (maellis1)
      * 
-     * @version 4/14/2015
-     * @version 9.4.15
-     * @version 10.29.15
-     * @version 10/15/2016
-     * @version 03/17/2017
+     * @author dylan hitt dylanh6
+     * @version Nov 16, 2017
+     *
+     * @param <E>
      */
     public static class Node<E> {
 
@@ -61,7 +27,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
 
         // The next node in the sequence.
         private Node<E> next;
-
 
         /**
          * Creates a new node with the given data
@@ -73,7 +38,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
             data = d;
         }
 
-
         /**
          * Sets the node after this node
          *
@@ -84,7 +48,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
             next = n;
         }
 
-
         /**
          * Gets the next node
          *
@@ -93,7 +56,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         public Node<E> next() {
             return next;
         }
-
 
         /**
          * Gets the data in the node
@@ -104,12 +66,13 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
             return data;
         }
     }
-
+    /**
+     * protected head
+     */
     protected Node<E> head;
 
     // the size of the linked list
     private int size;
-
 
     /**
      * Creates a new LinkedList object
@@ -120,7 +83,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
 
     }
 
-
     /**
      * Gets the number of elements in the list
      *
@@ -130,7 +92,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
     public int size() {
         return size;
     }
-
 
     /**
      * Adds the object to the position in the list
@@ -188,7 +149,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         size++;
     }
 
-
     /**
      * Adds the object to the end of the list.
      *
@@ -222,7 +182,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         size++;
     }
 
-
     /**
      * Checks if the array is empty
      *
@@ -232,7 +191,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
     public boolean isEmpty() {
         return (size == 0);
     }
-
 
     /**
      * Removes the first instance of the given object from the list
@@ -272,7 +230,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         // this accounts for the isEmpty case or the object does not exist
         return false;
     }
-
 
     /**
      * Removes the object at the given position
@@ -318,7 +275,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         }
     }
 
-
     /**
      * Gets the object at the given position
      *
@@ -349,7 +305,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         return data;
     }
 
-
     /**
      * Checks if the list contains the given object
      *
@@ -370,7 +325,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         return false;
     }
 
-
     /**
      * Removes all of the elements from the list
      */
@@ -384,7 +338,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         size = 0;
 
     }
-
 
     /**
      * Gets the last time the given object is in the list
@@ -409,10 +362,11 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         return lastIndex;
     }
 
-
     /**
-     * Returns a string representation of the list If a list contains A, B, and
-     * C, the following should be returned "{A, B, C}" (Without the quotations)
+     * Returns a string representation
+     *  of the list If a list contains A, B, and C,
+     * the following should be 
+     * returned "{A, B, C}" (Without the quotations)
      *
      * @return a string representing the list
      */
@@ -432,11 +386,13 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         return result;
     }
 
-
     /**
-     * Returns an array representation of the list If a list contains A, B, and
-     * C, the following should be returned {A, B, C}, If a list
-     * contains A, B, C, and C the following should be returned {A, B, C, C}
+     * Returns an array representation 
+     * of the list If a list contains A, B, and C,
+     * the following should be returned 
+     * {A, B, C}, If a list contains A, B, C, and C
+     * the following should 
+     * be returned {A, B, C, C}
      *
      * @return an array representing the list
      */
@@ -455,13 +411,14 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         return array;
     }
 
-
     /**
-     * Returns true if both lists have the exact same contents
-     * in the exact same order
+     * Returns true if both lists have 
+     * the exact same contents in the exact same
+     * order
      *
-     * @return a boolean of whether two lists have the same contents,
-     *         item per item and in the same order
+     * @return a boolean of whether two lists 
+     * have the same contents, item per item
+     *         and in the same order
      */
     @Override
     public boolean equals(Object obj) {
@@ -473,7 +430,7 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         }
         if (this.getClass() == obj.getClass()) {
             @SuppressWarnings("unchecked")
-            SinglyLinkedList<E> other = ((SinglyLinkedList<E>)obj);
+            SinglyLinkedList<E> other = ((SinglyLinkedList<E>) obj);
             if (other.size() == this.size()) {
                 Node<E> current = head;
                 Node<E> otherCurrent = other.head;
@@ -490,7 +447,7 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
 
         return false;
     }
-    
+
     /**
      * 
      * @author Ian Connerney (Ianco)
@@ -503,7 +460,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
         private Node<E> previousNode;
         private boolean nextCalled;
 
-
         /**
          * Creates a new DLListIterator
          */
@@ -513,7 +469,6 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
             nextCalled = false;
         }
 
-
         /**
          * Checks if there are more elements in the list
          *
@@ -521,9 +476,8 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
          */
         @Override
         public boolean hasNext() {
-            return nextNode.next!=null;
+            return nextNode.next != null;
         }
-
 
         /**
          * Gets the next value in the list
@@ -542,18 +496,19 @@ public class SinglyLinkedList<E> implements LList<E>, Iterable<E>{
                 return returnNode.getData();
             }
             else {
-                throw new NoSuchElementException("Illegal call to next(); "
-                    + "iterator is after end of list");
+                throw new NoSuchElementException("Illegal "
+                        + "call to next(); " + "iterator is "
+                                + "after end of list");
             }
         }
-
 
         /**
          * Removes the last object returned with next() from the list
          *
          * @throws IllegalStateException
-         *             if next has not been called yet
-         *             and if the element has already been removed
+         *             if next has not been 
+         *             called yet and if the element has already
+         *             been removed
          */
         @Override
         public void remove() {

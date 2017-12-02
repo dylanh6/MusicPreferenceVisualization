@@ -12,50 +12,36 @@ package prj5;
  */
 public class Analyzer {
 
-    private SinglyLinkedList<Person> personList;
-    private SongList songList;
+    /**
+     * constructor for the analyzer
+     * 
+     * 
+     */
+    public Analyzer() { 
+        // nothing needs to be here
 
-    public static final String[] majors = { "Computer Science", "Other Engineering", "Math or CMDA", "Other" };
-    public static final String[] regions = { "Northeast", "Southeast", "Outside of United States",
-            "United States (other than Southeast or Northwest)" };
-    public static final String[] hobbys = { "reading", "sports", "art", "music" };
-
-    public Analyzer(SinglyLinkedList<Person> personList, SongList songList) {
-        this.personList = personList;
-        this.songList = songList;
-        
-        
-    }
-    
-    
-    
-    public int divide(float bottom, float top) {
-        float percentage = 0;
-        
-        if (bottom != 0) {
-            percentage = (top / bottom) * 100;
-            
-        }
-        else {
-            percentage = 0;
-        }
-        
-        int ret = (int) percentage;
-        
-        return ret;
     }
 
-    public void representationCount(SinglyLinkedList<Person> personList, SongList songList) {
-        
+    /**
+     * does all the calculations adding up all the counts
+     * 
+     * @param personList1
+     *            accepts personLlist
+     * @param songList1
+     *            accepts songList
+     */
+    public void representationCount(SinglyLinkedList<Person> personList1, 
+            SongList songList1) {
+
         int rIncrement = 0;
-        
-        for (int a = 0; a < songList.size(); a++) {
+
+        for (int a = 0; a < songList1.size(); a++) {
             int[] counters = new int[48];
 
             
 
-            for (int b = 0; b < personList.size(); b++) {
-                Person localPerson = personList.get(b);
+            for (int b = 0; b < personList1.size(); b++) {
+                Person localPerson = personList1.get(b);
                 String[] responses = localPerson.getResponses();
 
                 if (localPerson.getHobby().equals("reading")) {
@@ -110,7 +96,7 @@ public class Analyzer {
                         counters[11]++;
                     }
                 }
-                else {
+                else if (localPerson.getHobby().equals("music")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[12]++;
                     }
@@ -128,7 +114,7 @@ public class Analyzer {
                     }
 
                 }
-                
+
                 if (localPerson.getMajor().equals("Computer Science")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[16]++;
@@ -146,7 +132,7 @@ public class Analyzer {
                         counters[19]++;
                     }
                 }
-                else if (localPerson.getMajor().equals("Math of CMDA")) {
+                else if (localPerson.getMajor().equals("Math or CMDA")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[20]++;
                     }
@@ -180,7 +166,7 @@ public class Analyzer {
                         counters[27]++;
                     }
                 }
-                else {
+                else if (localPerson.getMajor().equals("Other")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[28]++;
                     }
@@ -197,8 +183,8 @@ public class Analyzer {
                         counters[31]++;
                     }
                 }
-                
-                if(localPerson.getRegion().equals("Southeast")) {
+
+                if (localPerson.getRegion().equals("Southeast")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[32]++;
                     }
@@ -232,8 +218,9 @@ public class Analyzer {
                         counters[39]++;
                     }
                 }
-                else if (localPerson.getRegion().equals("United States "
-                        + "(other than Southeast or Northwest)")) {
+                else if (localPerson.getRegion().equals("United Sta"
+                        + "tes " + "(other than "
+                        + "Southeast or Northwest)")) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[40]++;
                     }
@@ -250,7 +237,7 @@ public class Analyzer {
                         counters[43]++;
                     }
                 }
-                else {
+                else if (localPerson.getRegion().equals(("Outside of United States"))) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[44]++;
                     }
@@ -266,16 +253,14 @@ public class Analyzer {
                     if (!responses[rIncrement + 1].equals("")) {
                         counters[47]++;
                     }
-                }               
-                
-                
-                
+                }
+
             }
-            
+
             rIncrement += 2;
-            songList.get(a).setResponseArray(counters);
+            songList1.get(a).setResponseArray(counters);
         }
-        
+
     }
-    
+
 }

@@ -25,13 +25,12 @@ public class Song {
      * @param artist accepts a string
      * @param year accepts and int
      * @param genre accepts a string
-     * @param index accepts an int
      */
     public Song(String name, String artist, int year, String genre) {
         this.name = name;
-        this.artist = artist;
-        this.genre = genre;
-        this.year = year;
+        this.artist = artist;  
+        this.genre = genre; 
+        this.year = year; 
                      
     }
     /**
@@ -70,13 +69,14 @@ public class Song {
     public int[] getResponses() {
         return responseArray;
     }
-    
+    /**
+     * sets teh response array
+     * @param anArray sets teh array
+     */
     public void setResponseArray(int[] anArray) {
         responseArray = anArray;
     }
-        
-
-    
+     
     /**
      * toString method
      * @return returns string

@@ -38,7 +38,8 @@ public class Person {
         this.idNum = id;
         try {
             this.date = dateFormat.parse(date);
-        } catch (ParseException e) {
+        } 
+        catch (ParseException e) {
             e.printStackTrace();
         }
         this.major = major;
@@ -62,7 +63,7 @@ public class Person {
     }
     /**
      * gets the persons major
-     * @return
+     * @return returns majr
      */
     public String getMajor() {
         return major;
@@ -83,7 +84,7 @@ public class Person {
     }
     /**
      * gets the responses of the person
-     * @return
+     * @return returns resposes
      */
     public String[] getResponses() {
         return responses;

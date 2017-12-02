@@ -3,7 +3,6 @@
  */
 package prj5;
 
-import java.io.FileNotFoundException;
 
 /**
  * Runs the the main method for the program
@@ -12,7 +11,7 @@ import java.io.FileNotFoundException;
  * @version Nov 16, 2017
  *
  */
-public class Input {
+public class Input { 
     /**
      * Main method for the program
      * 
@@ -42,12 +41,16 @@ public class Input {
 =======
         try {
             FileReader fileIn = new FileReader(args[1], args[0]);
+<<<<<<< HEAD
 >>>>>>> 09f32e1346e5b5f25130fc3e68b3440222bcf004
             Analyzer a = new Analyzer(fileIn.getPersonList(), fileIn.getSongList());
+=======
+            Analyzer a = new Analyzer();
+>>>>>>> 4337b2fea9a752554acd1d8826a5d8b1b3fc1a30
             a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
 
             SongList thisList = fileIn.getSongList();
-
+ 
             thisList.sortBy(SortEnum.GENRE);
 
             String outputGenre = thisList.outPutStringHobby();
@@ -60,7 +63,7 @@ public class Input {
 
             FileReader f = new FileReader("SongListNoGenreRepeats.csv", "MusicSurveyDataNoGenreRepeats.csv");
 
-            Analyzer h = new Analyzer(f.getPersonList(), f.getSongList());
+            Analyzer h = new Analyzer();
 
             h.representationCount(f.getPersonList(), f.getSongList());
 
@@ -84,9 +87,6 @@ public class Input {
         } catch (Exception e) {
             System.out.print(e);
 
-            // for (int i = 1; i < personTest.getLength() - 1; i++) {
-            // System.out.println(personTest.remove(i).getIdNum());
-            // }
 
         }
     }

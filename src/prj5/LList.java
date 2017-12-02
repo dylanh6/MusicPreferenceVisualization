@@ -4,7 +4,7 @@ package prj5;
  * This provides definitions for all of the methods necessary for a list
  * implementation
  *
- * @author Mark Wiggans, maellis1, jamal93
+ * @author dylan hitt dylanh6
  * @param <E>
  *            The class that you want it to store
  * @version 4/14/2015, 10/21/2015, 10/15/2016

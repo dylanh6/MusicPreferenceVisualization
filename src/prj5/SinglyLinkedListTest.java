@@ -5,7 +5,6 @@ import student.TestCase;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
 /**
  * 
  * @author Ian Connerney (Ianco)
@@ -16,7 +15,6 @@ public class SinglyLinkedListTest extends TestCase {
     private SinglyLinkedList<String> testList;
     private Iterator<String> iter;
 
-
     /**
      * sets up test cases
      */
@@ -24,7 +22,6 @@ public class SinglyLinkedListTest extends TestCase {
         testList = new SinglyLinkedList<String>();
         iter = testList.iterator();
     }
-
 
     /**
      * tests the size method
@@ -35,18 +32,15 @@ public class SinglyLinkedListTest extends TestCase {
         assertEquals(testList.size(), 1);
     }
 
-
     /**
-     * tests add method
-     * had 1 error
-     * Adding to the front
+     * tests add method had 1 error Adding to the front
      */
     public void testadd() {
         String nullString = null;
         Exception exception = null;
         try {
             testList.add(nullString);
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
@@ -58,21 +52,21 @@ public class SinglyLinkedListTest extends TestCase {
         assertEquals(testList.get(testList.size() - 1), "burrito");
         testList.add(0, "enchilada");
         assertEquals(testList.get(0), "enchilada");
-        
+
         exception = null;
         try {
             testList.add(0, nullString);
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IllegalArgumentException);
-        
+
         exception = null;
         try {
             testList.add(7, "moo");
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
@@ -82,13 +76,13 @@ public class SinglyLinkedListTest extends TestCase {
         exception = null;
         try {
             testList.add(-1, "moo");
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IndexOutOfBoundsException);
-  
+
         testList.clear();
         testList.add(0, "enchilada");
         assertEquals(testList.toString(), "{enchilada}");
@@ -99,7 +93,6 @@ public class SinglyLinkedListTest extends TestCase {
 
     }
 
-
     /**
      * test isEmpty
      */
@@ -109,11 +102,11 @@ public class SinglyLinkedListTest extends TestCase {
         assertFalse(testList.isEmpty());
     }
 
-
     /**
-     * tests remove
-     * SLLEqualsToArrayTest found an error with removing from the back
-     * also an error with normal remove and incrementing currentIndex
+     * tests remove SLLEqualsToArrayTest 
+     * found an error with removing from the back
+     * also an error with normal 
+     * remove and incrementing currentIndex
      */
     public void testremove() {
         assertFalse(testList.remove("duck"));
@@ -137,28 +130,28 @@ public class SinglyLinkedListTest extends TestCase {
         testList.remove("taquito");
         assertEquals(testList.toString(), "{burrito, taco, boom}");
         testList.remove("boom");
-        
+
         Exception exception = null;
         try {
             iter.remove();
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IllegalStateException);
-        
+
         iter = testList.iterator();
         assertTrue(iter.hasNext());
         iter.next();
         assertFalse(iter.hasNext());
         iter.remove();
         assertEquals(testList.toString(), "{burrito}");
-        
+
         exception = null;
         try {
             iter.next();
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
@@ -168,7 +161,7 @@ public class SinglyLinkedListTest extends TestCase {
         exception = null;
         try {
             testList.remove(7);
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
@@ -178,27 +171,25 @@ public class SinglyLinkedListTest extends TestCase {
         exception = null;
         try {
             testList.remove(-1);
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IndexOutOfBoundsException);
-        
+
         testList.clear();
         exception = null;
         try {
             testList.remove(0);
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IndexOutOfBoundsException);
-        
-        
-    }
 
+    }
 
     /**
      * tests getter method
@@ -214,14 +205,13 @@ public class SinglyLinkedListTest extends TestCase {
         Exception exception = null;
         try {
             testList.get(5);
-        }
+        } 
         catch (Exception e) {
             exception = e;
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IndexOutOfBoundsException);
     }
-
 
     /**
      * tests contains method
@@ -233,10 +223,8 @@ public class SinglyLinkedListTest extends TestCase {
         assertFalse(testList.contains("burrito"));
     }
 
-
     /**
-     * tests clear() method
-     * had one error in setting size = 0 after clearing
+     * tests clear() method had one error in setting size = 0 after clearing
      */
     public void testclear() {
         testList.clear();
@@ -248,7 +236,6 @@ public class SinglyLinkedListTest extends TestCase {
         assertEquals(testList.size(), 0);
         assertEquals(testList.toString(), "{}");
     }
-
 
     /**
      * tests lastIndexOf
@@ -262,7 +249,6 @@ public class SinglyLinkedListTest extends TestCase {
         assertEquals(testList.lastIndexOf("queso"), -1);
     }
 
-
     /**
      * tests toString method
      */
@@ -274,11 +260,12 @@ public class SinglyLinkedListTest extends TestCase {
         testList.add("burrito");
         assertEquals(testList.toString(), "{enchilada, burrito}");
     }
+
     /**
      * tests equals method
      */
     public void testequals() {
-        assertEquals(testList,testList);
+        assertEquals(testList, testList);
         SinglyLinkedList<String> testList2 = null;
         assertFalse(testList.equals(testList2));
         String stringList = "list";
@@ -289,9 +276,10 @@ public class SinglyLinkedListTest extends TestCase {
         testList2.add("Burrito");
         assertFalse(testList.equals(testList2));
         testList.add("Burrito");
-        testList2.add(0,"Taco");
-        assertEquals(testList,testList2);
+        testList2.add(0, "Taco");
+        assertEquals(testList, testList2);
     }
+
     /**
      * tests toArray method
      */
