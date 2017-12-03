@@ -25,14 +25,13 @@ public class SongListTest extends TestCase {
      * tests sortBy method
      */
     public void testsortBy() {
-        Song song1 = new Song("Adam", "Adele", 2010, "Bravo");
-        Song song2 = new Song("Bravo", "Adele", 2010, "Delta");
-        Song song3 = new Song("Charlie", "Adele", 2010, "Alpha");
-        Song song4 = new Song("Delta", "Adele", 2010, "Charlie");
+        Song song1 = new Song("Adam", "A", 2014, "Bravo");
+        Song song2 = new Song("Bravo", "B", 2011, "Delta");
+        Song song3 = new Song("Charlie", "C", 2013, "Alpha");
+        Song song4 = new Song("Delta", "D", 2012, "Charlie");
         songs.add(song4);
         songs.add(song2); 
         songs.add(song1); 
-        
         songs.add(song3);
         
         SongList a = new SongList();
@@ -51,8 +50,12 @@ public class SongListTest extends TestCase {
         assertEquals(songs.get(3), song2);
 
         songs.sortBy(SortEnum.ARTIST);
-        songs.sortBy(SortEnum.YEAR);
+        assertEquals(songs.get(0), song1);
+        assertEquals(songs.get(3), song4);
         
+        songs.sortBy(SortEnum.YEAR);
+        assertEquals(songs.get(0), song2);
+        assertEquals(songs.get(3), song1);
      
         a.sortBy(SortEnum.TITLE);
    

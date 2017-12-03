@@ -30,16 +30,18 @@ public class SongList extends SinglyLinkedList<Song> {
             insertionSort(comparer);
 
         }
-        // else if (sortBy == SortEnum.ARTIST) {
-
-        // }
+        else if (sortBy == SortEnum.ARTIST) {
+            comparer = new CompareByArtist();
+            insertionSort(comparer);
+        }
         else if (sortBy == SortEnum.GENRE) {
             comparer = new CompareByGenre();
             insertionSort(comparer);
         }
-        // else if (sortBy == SortEnum.YEAR) {
-
-        // }
+        else if (sortBy == SortEnum.YEAR) {
+            comparer = new CompareByYear();
+            insertionSort(comparer);
+        }
     }
 
     /**
