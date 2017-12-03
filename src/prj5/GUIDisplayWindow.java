@@ -50,6 +50,11 @@ public class GUIDisplayWindow {
     private Shape artist;
     private Shape dataBar;
     private static final int DATABAR_HEIGHT = BAR_HEIGHT / 4;
+    private SongList songList;
+    private int windowNum;
+    private int windowNumMax;
+    private static String currRep;
+    private int[] barPercent;
 
 
     /**
@@ -67,12 +72,6 @@ public class GUIDisplayWindow {
 
         createButtons();
 
-        printLegend("Hobby");
-
-        printGylph();
-
-        printLegend("Ma");
-
         try {
             FileReader fileIn = new FileReader("SongListNoGenreRepeats.csv",
                 "MusicSurveyDataNoGenreRepeats.csv");
@@ -80,10 +79,17 @@ public class GUIDisplayWindow {
             a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
 
             SongList e = fileIn.getSongList();
+
+            songList = e;
+
         }
         catch (Exception e) {
             System.out.print(e);
         }
+
+        windowNum = 0;
+        windowNumMax = songList.size() / 9;
+        currRep = "Hobby";
 
     }
 
@@ -150,108 +156,178 @@ public class GUIDisplayWindow {
     /**
      * This method executes when the Prev button is clicked
      */
-    public void clickedPrev() {
+    public void clickedPrev(Button button) {
+
+        window.removeAllShapes();
+
+        if (0 < windowNum) {
+
+            windowNum = windowNum - 1;
+            printGylph(windowNum);
+            printLegend(currRep);
+
+        }
 
     }
 
 
     /**
      * This method executes when the Sort by Artist Name button is clicked
+     * 
+     * @param button
+     *            This is the SortName button
      */
-    public void clickedSortName() {
+    public void clickedSortName(Button button) {
+        
+        songList.sortBy(SortEnum.ARTIST);
+        
+        window.removeAllShapes();
+        printGylph(windowNum);
+        printLegend(currRep);
 
     }
 
 
     /**
      * This method executes when the Sort by Song Title button is clicked
+     * 
+     * @param button
+     *            This is the SortTitle button
      */
-    public void clickedSortTitle() {
+    public void clickedSortTitle(Button button) {
 
+        songList.sortBy(SortEnum.TITLE);
+        
+        window.removeAllShapes();
+        printGylph(windowNum);
+        printLegend(currRep);
+        
     }
 
 
     /**
      * This method executes when the Sort by Release Year button is clicked
+     * 
+     * @param button
+     *            This is the SortYear button
      */
-    public void clickedSortYear() {
+    public void clickedSortYear(Button button) {
+        
+        songList.sortBy(SortEnum.YEAR);
+        
+        window.removeAllShapes();
+        printGylph(windowNum);
+        printLegend(currRep);
+
 
     }
 
 
     /**
      * This method executes when the Genre button is clicked
+     * 
+     * @param button
+     *            This is the SortGenre button
      */
-    public void clickedSortGenre() {
+    public void clickedSortGenre(Button button) {
+        
+        songList.sortBy(SortEnum.GENRE);
+        
+        window.removeAllShapes();
+        printGylph(windowNum);
+        printLegend(currRep);
+
 
     }
 
 
     /**
      * This method executes when the Next button is clicked
+     * 
+     * @param button
+     *            This is the next button
      */
-    public void clickedNext() {
+    public void clickedNext(Button button) {
+
+        window.removeAllShapes();
+
+        if (windowNum < windowNumMax) {
+
+            windowNum = windowNum + 1;
+            printGylph(windowNum);
+            printLegend(currRep);
+
+        }
 
     }
 
 
     /**
      * This method executes when the Represent by Hobby button is clicked
+     * 
+     * @param button
+     *            This is the hobby button
      */
-    public void clickedHobby() {
+    public void clickedHobby(Button button) {
 
-        hobbyLegend();
+        window.removeAllShapes();
+
+        printGylph(windowNum);
+
+        printLegend("Hobby");
+
+        currRep = "Hobby";
+
     }
 
 
     /**
      * This method executes when the Represent by Major button is clicked
+     * 
+     * @param button
+     *            This is the major button
      */
-    public void clickedMajor() {
+    public void clickedMajor(Button button) {
 
-        majorLegend();
+        window.removeAllShapes();
+
+        printGylph(windowNum);
+
+        printLegend("Major");
+
+        currRep = "Major";
 
     }
 
 
     /**
      * This method executes when the Represent Region button is clicked
+     * 
+     * @param button
+     *            This is the region button
      */
-    public void clickedRegion() {
+    public void clickedRegion(Button button) {
 
-        regionLegend();
+        window.removeAllShapes();
+
+        printGylph(windowNum);
+
+        printLegend("Region");
+
+        currRep = "Region";
 
     }
 
 
     /**
      * This method executes when the Quit button is clicked
+     * 
+     * @param button
+     *            This is the quit button
      */
-    public void clickedQuit() {
+    public void clickedQuit(Button button) {
 
-    }
-
-
-    /**
-     * This method prints the Hobby Legend to the window
-     */
-    public void hobbyLegend() {
-
-    }
-
-
-    /**
-     * This method prints the Major Legend to the window
-     */
-    public void majorLegend() {
-
-    }
-
-
-    /**
-     * This method prints the Region Legend to the window
-     */
-    public void regionLegend() {
+        System.exit(0);
 
     }
 
@@ -341,10 +417,11 @@ public class GUIDisplayWindow {
     /**
      * This method prints the correct legend
      */
-    public void printGylph() {
+    public void printGylph(int windowNum) {
 
         int widthMulti = 0;
         int heightMulti = 0;
+        int j = windowNum;
 
         for (int i = 0; i < 9; i++) {
 
@@ -374,10 +451,10 @@ public class GUIDisplayWindow {
             }
 
             songName = new TextShape(BAR_X * widthMulti - BAR_WIDTH - 10, BAR_Y
-                * heightMulti - 60, "Song Name");
+                * heightMulti - 60, songList.get(j).getName());
             songName.setBackgroundColor(Color.WHITE);
             artist = new TextShape(BAR_X * widthMulti - BAR_WIDTH - 10, BAR_Y
-                * heightMulti - 30, "Artist");
+                * heightMulti - 30, songList.get(j).getArtist());
             artist.setBackgroundColor(Color.WHITE);
             window.addShape(songName);
             window.addShape(artist);
@@ -386,7 +463,25 @@ public class GUIDisplayWindow {
                 BAR_HEIGHT, Color.BLACK);
             window.addShape(bar);
 
+            leftBars(widthMulti, heightMulti, j);
+
+            rightBars(widthMulti, heightMulti, j);
+
+            j++;
+
         }
+
+    }
+
+
+    /**
+     * This method prints the left bars in the glyph
+     */
+    public void leftBars(int widthLoc, int heightLoc, int songNumber) {
+
+        int widthMulti = widthLoc;
+        int heightMulti = heightLoc;
+        int j = songNumber;
 
         Color color = null;
 
@@ -410,14 +505,43 @@ public class GUIDisplayWindow {
                 color = Color.GREEN;
 
             }
+            
+            if (currRep.equals("Hobby")) {
+                barPercent = songList.representOutput(RepresentEnum.HOBBY,
+                    songList.get(j));
+            }
+            else if (currRep.equals("Major")) {
+                barPercent = songList.representOutput(RepresentEnum.MAJOR,
+                    songList.get(j));
+            }
+            else if (currRep.equals("Region")) {
+                barPercent = songList.representOutput(RepresentEnum.REGION,
+                    songList.get(j));
+                
+            }
 
-            int barSize = (i + 1) * 15;
-            dataBar = new Shape(BAR_X - barSize, BAR_Y + (i * DATABAR_HEIGHT),
-                barSize, DATABAR_HEIGHT, color);
+            int barSize = barPercent[i];
+            dataBar = new Shape(BAR_X * widthMulti - barSize, BAR_Y
+                * heightMulti + (i * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
+                color);
 
             window.addShape(dataBar);
 
         }
+
+    }
+
+
+    /**
+     * This method prints the right bars in the glyph
+     */
+    public void rightBars(int widthLoc, int heightLoc, int songNumber) {
+
+        int widthMulti = widthLoc;
+        int heightMulti = heightLoc;
+        int j = songNumber;
+
+        Color color = null;
 
         // Print right bars
         for (int i = 0; i < 4; i++) {
@@ -440,9 +564,24 @@ public class GUIDisplayWindow {
 
             }
 
-            int barSize = (i + 1) * 15;
-            dataBar = new Shape(BAR_X + BAR_WIDTH, BAR_Y + (i * DATABAR_HEIGHT),
-                barSize, DATABAR_HEIGHT, color);
+            if (currRep.equals("Hobby")) {
+                barPercent = songList.representOutput(RepresentEnum.HOBBY,
+                    songList.get(j));
+            }
+            else if (currRep.equals("Major")) {
+                barPercent = songList.representOutput(RepresentEnum.MAJOR,
+                    songList.get(j));
+            }
+            else if (currRep.equals("Region")) {
+                barPercent = songList.representOutput(RepresentEnum.REGION,
+                    songList.get(j));
+                
+            }
+
+            int barSize = barPercent[i];
+            dataBar = new Shape(BAR_X * widthMulti + BAR_WIDTH, BAR_Y
+                * heightMulti + (i * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
+                color);
 
             window.addShape(dataBar);
 
