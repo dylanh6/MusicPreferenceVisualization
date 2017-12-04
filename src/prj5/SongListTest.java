@@ -68,7 +68,9 @@ public class SongListTest extends TestCase {
         assertEquals(0, songs.divide(0, 95));
 
     }
-    
+    /**
+     * testrep
+     */
     public void testRepresentOutput() {
         int[] test = new int[8];
         for (int i = 0; i < 8; i++) {
@@ -80,7 +82,7 @@ public class SongListTest extends TestCase {
         
         int[] g = new int[48];
         
-        for (int i = 0; i < 46; i ++) {
+        for (int i = 0; i < 46; i++) {
             g[i] = 1;
         }
         g[46] = 1;
@@ -89,11 +91,14 @@ public class SongListTest extends TestCase {
         Song testSong = new Song("me", "adele", 2010, "delta");
         testSong.setResponseArray(g);
         
-        assertTrue(Arrays.equals(test, songs.representOutput(RepresentEnum.HOBBY, testSong)));
+        assertTrue(Arrays.equals(test, 
+                songs.representOutput(RepresentEnum.HOBBY, testSong)));
         
-        assertTrue(Arrays.equals(test, songs.representOutput(RepresentEnum.MAJOR, testSong)));
+        assertTrue(Arrays.equals(test, 
+                songs.representOutput(RepresentEnum.MAJOR, testSong)));
         test[7] = 50;
-        assertTrue(Arrays.equals(test, songs.representOutput(RepresentEnum.REGION, testSong)));
+        assertTrue(Arrays.equals(test, 
+                songs.representOutput(RepresentEnum.REGION, testSong)));
     }
 }
  

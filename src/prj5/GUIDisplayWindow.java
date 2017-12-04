@@ -60,7 +60,7 @@ public class GUIDisplayWindow {
     /**
      * Constructor
      */
-    public GUIDisplayWindow() {
+    public GUIDisplayWindow(String songFile, String personFile) {
 
         window = new Window("Music Preference Visualization");
         window.setSize(1500, 800);
@@ -73,8 +73,8 @@ public class GUIDisplayWindow {
         createButtons();
 
         try {
-            FileReader fileIn = new FileReader("SongListNoGenreRepeats.csv",
-                "MusicSurveyDataNoGenreRepeats.csv");
+            FileReader fileIn = new FileReader(songFile,
+                personFile);
             Analyzer a = new Analyzer();
             a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
 
