@@ -251,11 +251,13 @@ public class GUIDisplayWindow {
 
         window.removeAllShapes();
 
+        
         if (windowNum < windowNumMax) {
 
             windowNum = windowNum + 1;
-            printGylph(windowNum);
             printLegend(currRep);
+            printGylph(windowNum);
+            
 
         }
 
@@ -421,7 +423,7 @@ public class GUIDisplayWindow {
 
         int widthMulti = 0;
         int heightMulti = 0;
-        int j = windowNum;
+        int j = windowNum * 9;
 
         for (int i = 0; i < 9; i++) {
 

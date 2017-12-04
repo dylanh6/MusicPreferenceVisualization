@@ -57,8 +57,6 @@ public class Input {
             System.out.println(genre + title);
         } catch (Exception e) {
             System.out.print(e);
-
-
         }
     }
 }
