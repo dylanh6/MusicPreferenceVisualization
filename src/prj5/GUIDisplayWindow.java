@@ -157,6 +157,7 @@ public class GUIDisplayWindow {
      * This method executes when the Prev button is clicked
      */
     public void clickedPrev(Button button) {
+      
 
         window.removeAllShapes();
 
@@ -178,6 +179,7 @@ public class GUIDisplayWindow {
      *            This is the SortName button
      */
     public void clickedSortName(Button button) {
+        windowNum = 0;
         
         songList.sortBy(SortEnum.ARTIST);
         
@@ -195,6 +197,7 @@ public class GUIDisplayWindow {
      *            This is the SortTitle button
      */
     public void clickedSortTitle(Button button) {
+        windowNum = 0;
 
         songList.sortBy(SortEnum.TITLE);
         
@@ -212,6 +215,7 @@ public class GUIDisplayWindow {
      *            This is the SortYear button
      */
     public void clickedSortYear(Button button) {
+        windowNum = 0;
         
         songList.sortBy(SortEnum.YEAR);
         
@@ -230,6 +234,7 @@ public class GUIDisplayWindow {
      *            This is the SortGenre button
      */
     public void clickedSortGenre(Button button) {
+        windowNum = 0;
         
         songList.sortBy(SortEnum.GENRE);
         
@@ -271,12 +276,14 @@ public class GUIDisplayWindow {
      *            This is the hobby button
      */
     public void clickedHobby(Button button) {
-
+        
+        windowNum = 0;
         window.removeAllShapes();
-
+        
+        printLegend("Hobby");
         printGylph(windowNum);
 
-        printLegend("Hobby");
+        
 
         currRep = "Hobby";
 
@@ -290,12 +297,13 @@ public class GUIDisplayWindow {
      *            This is the major button
      */
     public void clickedMajor(Button button) {
-
+        
+        windowNum = 0;
         window.removeAllShapes();
-
+        printLegend("Major");
         printGylph(windowNum);
 
-        printLegend("Major");
+        
 
         currRep = "Major";
 
@@ -311,10 +319,10 @@ public class GUIDisplayWindow {
     public void clickedRegion(Button button) {
 
         window.removeAllShapes();
-
+        printLegend("Region");
         printGylph(windowNum);
 
-        printLegend("Region");
+        
 
         currRep = "Region";
 
@@ -484,21 +492,22 @@ public class GUIDisplayWindow {
         int widthMulti = widthLoc;
         int heightMulti = heightLoc;
         int j = songNumber;
+        int counter = 0;
 
         Color color = null;
 
         // Print left bars
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 8; i+=2) {
 
             if (i == 0) {
                 color = Color.PINK;
 
             }
-            else if (i == 1) {
+            else if (i == 2) {
                 color = Color.BLUE;
 
             }
-            else if (i == 2) {
+            else if (i == 4) {
                 color = Color.YELLOW;
 
             }
@@ -524,9 +533,10 @@ public class GUIDisplayWindow {
 
             int barSize = barPercent[i];
             dataBar = new Shape(BAR_X * widthMulti - barSize, BAR_Y
-                * heightMulti + (i * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
+                * heightMulti + (counter * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
                 color);
-
+            
+            counter++;
             window.addShape(dataBar);
 
         }
@@ -544,19 +554,20 @@ public class GUIDisplayWindow {
         int j = songNumber;
 
         Color color = null;
+        int counter = 0;
 
         // Print right bars
-        for (int i = 0; i < 4; i++) {
+        for (int i = 1; i < 8; i+=2) {
 
-            if (i == 0) {
+            if (i == 1) {
                 color = Color.PINK;
 
             }
-            else if (i == 1) {
+            else if (i == 3) {
                 color = Color.BLUE;
 
             }
-            else if (i == 2) {
+            else if (i == 5) {
                 color = Color.YELLOW;
 
             }
@@ -581,10 +592,12 @@ public class GUIDisplayWindow {
             }
 
             int barSize = barPercent[i];
+            
             dataBar = new Shape(BAR_X * widthMulti + BAR_WIDTH, BAR_Y
-                * heightMulti + (i * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
+                * heightMulti + (counter * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
                 color);
-
+           
+            counter++;
             window.addShape(dataBar);
 
         }
