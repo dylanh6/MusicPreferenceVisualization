@@ -237,7 +237,8 @@ public class Analyzer {
                         counters[43]++;
                     }
                 }
-                else if (localPerson.getRegion().equals(("Outside of United States"))) {
+                else if (localPerson.getRegion().equals(
+                        ("Outside of United States"))) {
                     if (responses[rIncrement].equals("Yes")) {
                         counters[44]++;
                     }

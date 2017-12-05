@@ -47,7 +47,7 @@ public class GUIDisplayWindow {
     private static int BAR_Y;
     private Shape bar;
     private Shape songName;
-    private Shape artist;
+    private Shape bottomText;
     private Shape dataBar;
     private static final int DATABAR_HEIGHT = BAR_HEIGHT / 4;
     private SongList songList;
@@ -55,12 +55,13 @@ public class GUIDisplayWindow {
     private int windowNumMax;
     private static String currRep;
     private int[] barPercent;
+    private String sortType;
 
 
     /**
      * Constructor
      */
-    public GUIDisplayWindow() {
+    public GUIDisplayWindow(String songFile, String personFile) {
 
         window = new Window("Music Preference Visualization");
         window.setSize(1500, 800);
@@ -73,8 +74,7 @@ public class GUIDisplayWindow {
         createButtons();
 
         try {
-            FileReader fileIn = new FileReader("SongListNoGenreRepeats.csv",
-                "MusicSurveyDataNoGenreRepeats.csv");
+            FileReader fileIn = new FileReader(songFile, personFile);
             Analyzer a = new Analyzer();
             a.representationCount(fileIn.getPersonList(), fileIn.getSongList());
 
@@ -90,7 +90,8 @@ public class GUIDisplayWindow {
         windowNum = 0;
         windowNumMax = songList.size() / 9;
         currRep = "Hobby";
-
+        sortType = "Name";
+        
     }
 
 
@@ -163,7 +164,7 @@ public class GUIDisplayWindow {
         if (0 < windowNum) {
 
             windowNum = windowNum - 1;
-            printGylph(windowNum);
+            printGylph(windowNum, sortType);
             printLegend(currRep);
 
         }
@@ -178,11 +179,13 @@ public class GUIDisplayWindow {
      *            This is the SortName button
      */
     public void clickedSortName(Button button) {
+        windowNum = 0;
+        sortType = "Name";
         
         songList.sortBy(SortEnum.ARTIST);
-        
+
         window.removeAllShapes();
-        printGylph(windowNum);
+        printGylph(windowNum, sortType);
         printLegend(currRep);
 
     }
@@ -195,13 +198,15 @@ public class GUIDisplayWindow {
      *            This is the SortTitle button
      */
     public void clickedSortTitle(Button button) {
+        windowNum = 0;
+        sortType = "Title";
 
         songList.sortBy(SortEnum.TITLE);
-        
+
         window.removeAllShapes();
-        printGylph(windowNum);
+        printGylph(windowNum, sortType);
         printLegend(currRep);
-        
+
     }
 
 
@@ -212,13 +217,14 @@ public class GUIDisplayWindow {
      *            This is the SortYear button
      */
     public void clickedSortYear(Button button) {
-        
-        songList.sortBy(SortEnum.YEAR);
-        
-        window.removeAllShapes();
-        printGylph(windowNum);
-        printLegend(currRep);
+        windowNum = 0;
+        sortType = "Year";
 
+        songList.sortBy(SortEnum.YEAR);
+
+        window.removeAllShapes();
+        printGylph(windowNum, sortType);
+        printLegend(currRep);
 
     }
 
@@ -230,13 +236,14 @@ public class GUIDisplayWindow {
      *            This is the SortGenre button
      */
     public void clickedSortGenre(Button button) {
-        
-        songList.sortBy(SortEnum.GENRE);
-        
-        window.removeAllShapes();
-        printGylph(windowNum);
-        printLegend(currRep);
+        windowNum = 0;
+        sortType = "Genre";
 
+        songList.sortBy(SortEnum.GENRE);
+
+        window.removeAllShapes();
+        printGylph(windowNum, sortType);
+        printLegend(currRep);
 
     }
 
@@ -251,13 +258,11 @@ public class GUIDisplayWindow {
 
         window.removeAllShapes();
 
-        
         if (windowNum < windowNumMax) {
 
             windowNum = windowNum + 1;
             printLegend(currRep);
-            printGylph(windowNum);
-            
+            printGylph(windowNum, sortType);
 
         }
 
@@ -272,11 +277,11 @@ public class GUIDisplayWindow {
      */
     public void clickedHobby(Button button) {
 
+        windowNum = 0;
         window.removeAllShapes();
 
-        printGylph(windowNum);
-
         printLegend("Hobby");
+        printGylph(windowNum, sortType);
 
         currRep = "Hobby";
 
@@ -291,11 +296,10 @@ public class GUIDisplayWindow {
      */
     public void clickedMajor(Button button) {
 
+        windowNum = 0;
         window.removeAllShapes();
-
-        printGylph(windowNum);
-
         printLegend("Major");
+        printGylph(windowNum, sortType);
 
         currRep = "Major";
 
@@ -311,10 +315,8 @@ public class GUIDisplayWindow {
     public void clickedRegion(Button button) {
 
         window.removeAllShapes();
-
-        printGylph(windowNum);
-
         printLegend("Region");
+        printGylph(windowNum, sortType);
 
         currRep = "Region";
 
@@ -419,7 +421,7 @@ public class GUIDisplayWindow {
     /**
      * This method prints the correct legend
      */
-    public void printGylph(int windowNum) {
+    public void printGylph(int windowNum, String sortType) {
 
         int widthMulti = 0;
         int heightMulti = 0;
@@ -455,11 +457,24 @@ public class GUIDisplayWindow {
             songName = new TextShape(BAR_X * widthMulti - BAR_WIDTH - 10, BAR_Y
                 * heightMulti - 60, songList.get(j).getName());
             songName.setBackgroundColor(Color.WHITE);
-            artist = new TextShape(BAR_X * widthMulti - BAR_WIDTH - 10, BAR_Y
-                * heightMulti - 30, songList.get(j).getArtist());
-            artist.setBackgroundColor(Color.WHITE);
+
+            String theBottomText;
+            if (sortType.equals("Name") || sortType.equals("Title")) {
+                theBottomText = "by " + songList.get(j).getArtist();
+            }
+            else if (sortType.equals("Year")) {
+                theBottomText = Integer.toString(songList.get(j).getYear());
+
+            }
+            else { // sortType.equals("Genre")
+                theBottomText = songList.get(j).getGenre();
+            }
+
+            bottomText = new TextShape(BAR_X * widthMulti - BAR_WIDTH - 10,
+                BAR_Y * heightMulti - 30, theBottomText);
+            bottomText.setBackgroundColor(Color.WHITE);
             window.addShape(songName);
-            window.addShape(artist);
+            window.addShape(bottomText);
 
             bar = new Shape(BAR_X * widthMulti, BAR_Y * heightMulti, BAR_WIDTH,
                 BAR_HEIGHT, Color.BLACK);
@@ -484,21 +499,22 @@ public class GUIDisplayWindow {
         int widthMulti = widthLoc;
         int heightMulti = heightLoc;
         int j = songNumber;
+        int counter = 0;
 
         Color color = null;
 
         // Print left bars
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 8; i += 2) {
 
             if (i == 0) {
                 color = Color.PINK;
 
             }
-            else if (i == 1) {
+            else if (i == 2) {
                 color = Color.BLUE;
 
             }
-            else if (i == 2) {
+            else if (i == 4) {
                 color = Color.YELLOW;
 
             }
@@ -507,7 +523,7 @@ public class GUIDisplayWindow {
                 color = Color.GREEN;
 
             }
-            
+
             if (currRep.equals("Hobby")) {
                 barPercent = songList.representOutput(RepresentEnum.HOBBY,
                     songList.get(j));
@@ -519,14 +535,15 @@ public class GUIDisplayWindow {
             else if (currRep.equals("Region")) {
                 barPercent = songList.representOutput(RepresentEnum.REGION,
                     songList.get(j));
-                
+
             }
 
             int barSize = barPercent[i];
             dataBar = new Shape(BAR_X * widthMulti - barSize, BAR_Y
-                * heightMulti + (i * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
-                color);
+                * heightMulti + (counter * DATABAR_HEIGHT), barSize,
+                DATABAR_HEIGHT, color);
 
+            counter++;
             window.addShape(dataBar);
 
         }
@@ -544,19 +561,20 @@ public class GUIDisplayWindow {
         int j = songNumber;
 
         Color color = null;
+        int counter = 0;
 
         // Print right bars
-        for (int i = 0; i < 4; i++) {
+        for (int i = 1; i < 8; i += 2) {
 
-            if (i == 0) {
+            if (i == 1) {
                 color = Color.PINK;
 
             }
-            else if (i == 1) {
+            else if (i == 3) {
                 color = Color.BLUE;
 
             }
-            else if (i == 2) {
+            else if (i == 5) {
                 color = Color.YELLOW;
 
             }
@@ -577,14 +595,16 @@ public class GUIDisplayWindow {
             else if (currRep.equals("Region")) {
                 barPercent = songList.representOutput(RepresentEnum.REGION,
                     songList.get(j));
-                
+
             }
 
             int barSize = barPercent[i];
-            dataBar = new Shape(BAR_X * widthMulti + BAR_WIDTH, BAR_Y
-                * heightMulti + (i * DATABAR_HEIGHT), barSize, DATABAR_HEIGHT,
-                color);
 
+            dataBar = new Shape(BAR_X * widthMulti + BAR_WIDTH, BAR_Y
+                * heightMulti + (counter * DATABAR_HEIGHT), barSize,
+                DATABAR_HEIGHT, color);
+
+            counter++;
             window.addShape(dataBar);
 
         }
